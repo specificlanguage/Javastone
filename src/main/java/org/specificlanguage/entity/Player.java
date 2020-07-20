@@ -4,18 +4,24 @@ import org.specificlanguage.HSGame;
 import org.specificlanguage.card.Card;
 import org.specificlanguage.card.CardClass;
 import org.specificlanguage.card.HeroPower;
+import org.specificlanguage.event.HeroPowerEvent;
+
+import java.util.Collection;
+import java.util.Collections;
 
 public class Player {
 
     public int health;
     public int maxHealth;
     private HSGame game;
-    private Card[] cards;
-    protected CardClass playerClass;
+    private Card[] hand;
+    private Card[] deck;
+    public CardClass playerClass;
     public HeroPower heroPower;
 
     private Player(){
-        this.cards = new Card[10];
+        this.hand = new Card[10];
+        this.deck = new Card[30];
         initHealth(30);
     }
 
@@ -53,5 +59,13 @@ public class Player {
             throw new Exception("Game not assigned to player");
         return getGame().getOpponent(this);
     }
+
+    public boolean playHeroPower(){
+        HeroPowerEvent hpEvent = new HeroPowerEvent(this.heroPower);
+        // TODO
+        return true;
+    }
+
+
 
 }

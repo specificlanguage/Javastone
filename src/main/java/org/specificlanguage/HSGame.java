@@ -4,11 +4,15 @@ import org.specificlanguage.action.Action;
 import org.specificlanguage.entity.Minion;
 import org.specificlanguage.entity.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observer;
 import java.util.Queue;
 
 public class HSGame {
 
     public Queue<Action> actionQueue;
+    public List<Observer> observers = new ArrayList<>();
     public Player player1;
     public Player player2;
     public Board board;

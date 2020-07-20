@@ -1,5 +1,7 @@
 package org.specificlanguage.entity;
 
+import org.specificlanguage.card.CardClass;
+
 public class Minion {
 
     public int cost;
@@ -8,6 +10,45 @@ public class Minion {
     public int attack;
     public String name;
     public Player playerControlled;
+    public CardClass cardClass;
+    public String id;
+
+    public Minion(int cost, int attack, int maxHealth, String name, Player player, CardClass cardClass){
+        setCost(cost);
+        setAttack(attack);
+        initHealth(maxHealth);
+        this.name = name;
+        this.playerControlled = player;
+        this.cardClass = cardClass;
+    }
+
+    public Minion(int cost, int attack, int maxHealth, String name, Player player, CardClass cardClass, String id){
+        this(cost, attack, maxHealth, name, player, cardClass);
+        this.id = id;
+    }
+
+    public boolean setAttack(int attack){
+        if (attack < 0)
+            return false;
+        this.attack = attack;
+        return true;
+    }
+
+    private boolean setCost(int cost){
+        if (cost < 0)
+            return false;
+        this.cost = cost;
+        return true;
+    }
+
+    public boolean initHealth(int health){
+        if (health <= 0)
+            return false;
+        this.health = health;
+        this.maxHealth = health;
+        return true;
+    }
+
 
 
 }

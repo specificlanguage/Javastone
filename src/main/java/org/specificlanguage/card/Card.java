@@ -6,5 +6,6 @@ public abstract class Card {
     protected int mana;
     public String name;
     public Rarity rarity;
+    public String id;
 
 }

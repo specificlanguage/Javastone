@@ -49,7 +49,7 @@ public class HeroPower extends Card {
     }
 
     public boolean execute(){
-        action.execute();
+
         return true;
     }
 

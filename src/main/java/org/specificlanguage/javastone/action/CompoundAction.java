@@ -5,7 +5,7 @@ import org.specificlanguage.javastone.entity.Entity;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-public class CompoundAction implements Action{
+public class CompoundAction implements Action {
 
     LinkedList<Action> actions;
     Entity caster;
@@ -19,6 +19,9 @@ public class CompoundAction implements Action{
 
     @Override
     public boolean execute() {
-        return false;
+        for(Action action : actions){
+            action.execute();
+        }
+        return true;
     }
 }

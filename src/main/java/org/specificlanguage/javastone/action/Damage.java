@@ -4,10 +4,9 @@ import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.entity.Future;
 import org.specificlanguage.javastone.entity.Player;
 
-public class Damage implements Targetable {
+public class Damage extends Targetable {
 
     private Entity target;
-    private Entity caster;
     private int damage;
 
     public Damage(Entity target, Entity caster, int damage){

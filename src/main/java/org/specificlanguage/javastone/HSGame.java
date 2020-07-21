@@ -2,15 +2,16 @@ package org.specificlanguage.javastone;
 
 import org.specificlanguage.javastone.action.Action;
 import org.specificlanguage.javastone.entity.Player;
+import org.specificlanguage.javastone.event.GameEvent;
+import org.specificlanguage.javastone.listener.GameListener;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observer;
-import java.util.Queue;
+import java.util.*;
 
 public class HSGame {
 
-    public Queue<Action> actionQueue;
+    private Stack<GameEvent> eventStack;
+    private List<GameListener> listeners;
+    private Queue<Action> actionQueue;
     public List<Observer> observers = new ArrayList<>();
     public Player player1;
     public Player player2;
@@ -43,5 +44,24 @@ public class HSGame {
     public Board getBoard(){
         return board;
     }
+
+    public boolean processEvent(GameEvent event){
+        eventStack.push(event);
+        List<GameListener> validListeners = listeners;
+
+        for(GameListener listener : listeners){
+            if(listener.getEvent().getClass() == event.getClass()){
+                listeners.remove(listener);
+                validListeners.add(listener);
+                listener.processEvent();
+            }
+        }
+
+        eventStack.pop();
+
+        return true;
+    }
+
+
 
 }

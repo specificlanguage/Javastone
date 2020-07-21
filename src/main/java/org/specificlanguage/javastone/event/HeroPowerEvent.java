@@ -1,10 +1,11 @@
 package org.specificlanguage.javastone.event;
 
+import org.specificlanguage.javastone.action.Action;
 import org.specificlanguage.javastone.card.HeroPower;
 
 import java.util.Objects;
 
-public class HeroPowerEvent implements Event {
+public class HeroPowerEvent implements GameEvent {
 
     private final HeroPower hp;
 
@@ -16,5 +17,8 @@ public class HeroPowerEvent implements Event {
         return this.hp;
     }
 
+    public Action executeAction(){
+        return hp.action;
+    }
 
 }

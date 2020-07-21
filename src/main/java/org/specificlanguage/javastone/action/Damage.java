@@ -21,9 +21,12 @@ public class Damage extends Targetable {
 
     @Override
     public boolean execute() {
+        /*
         if(target instanceof Future) {
             //reassign target to be done
         }
+
+         */
 
         // DamageEvent?
         target.damage(damage);

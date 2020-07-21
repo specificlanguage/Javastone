@@ -57,7 +57,7 @@ public class Player extends Entity {
 
     public boolean playHeroPower(){
         HeroPowerEvent hpEvent = new HeroPowerEvent(this.heroPower);
-        // TODO
+        game.processEvent(hpEvent);
         return true;
     }
 

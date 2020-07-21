@@ -1,6 +1,6 @@
-package org.specificlanguage.entity;
+package org.specificlanguage.javastone.entity;
 
-public class Future {
+public class Future extends Entity{
 
     //placeholder class to eventually target a future entity
 

@@ -1,4 +1,4 @@
-package org.specificlanguage.card;
+package org.specificlanguage.javastone.card;
 
 public abstract class Card {
 

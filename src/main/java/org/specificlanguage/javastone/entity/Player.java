@@ -1,18 +1,13 @@
-package org.specificlanguage.entity;
+package org.specificlanguage.javastone.entity;
 
-import org.specificlanguage.HSGame;
-import org.specificlanguage.card.Card;
-import org.specificlanguage.card.CardClass;
-import org.specificlanguage.card.HeroPower;
-import org.specificlanguage.event.HeroPowerEvent;
+import org.specificlanguage.javastone.HSGame;
+import org.specificlanguage.javastone.card.Card;
+import org.specificlanguage.javastone.card.CardClass;
+import org.specificlanguage.javastone.card.HeroPower;
+import org.specificlanguage.javastone.event.HeroPowerEvent;
 
-import java.util.Collection;
-import java.util.Collections;
+public class Player extends Entity {
 
-public class Player {
-
-    public int health;
-    public int maxHealth;
     private HSGame game;
     private Card[] hand;
     private Card[] deck;

@@ -1,4 +1,4 @@
-package org.specificlanguage;
+package org.specificlanguage.javastone;
 
 public class Hearthstone {
 

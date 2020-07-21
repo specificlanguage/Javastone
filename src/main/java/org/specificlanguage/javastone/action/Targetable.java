@@ -1,4 +1,4 @@
-package org.specificlanguage.action;
+package org.specificlanguage.javastone.action;
 
 public interface Targetable extends Action {
 

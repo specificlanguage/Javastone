@@ -1,9 +1,9 @@
-package org.specificlanguage.action;
+package org.specificlanguage.javastone.action;
 
-import org.specificlanguage.Board;
-import org.specificlanguage.card.CardClass;
-import org.specificlanguage.entity.Minion;
-import org.specificlanguage.entity.Player;
+import org.specificlanguage.javastone.Board;
+import org.specificlanguage.javastone.card.CardClass;
+import org.specificlanguage.javastone.entity.Minion;
+import org.specificlanguage.javastone.entity.Player;
 
 public class Summon implements Action {
 

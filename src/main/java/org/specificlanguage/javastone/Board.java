@@ -1,7 +1,7 @@
-package org.specificlanguage;
+package org.specificlanguage.javastone;
 
-import org.specificlanguage.entity.Minion;
-import org.specificlanguage.entity.Player;
+import org.specificlanguage.javastone.entity.Minion;
+import org.specificlanguage.javastone.entity.Player;
 
 public class Board {
 

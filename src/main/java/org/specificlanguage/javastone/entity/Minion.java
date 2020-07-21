@@ -1,12 +1,10 @@
-package org.specificlanguage.entity;
+package org.specificlanguage.javastone.entity;
 
-import org.specificlanguage.card.CardClass;
+import org.specificlanguage.javastone.card.CardClass;
 
-public class Minion {
+public class Minion extends Entity{
 
     public int cost;
-    public int health;
-    public int maxHealth;
     public int attack;
     public String name;
     public Player playerControlled;
@@ -14,6 +12,7 @@ public class Minion {
     public String id;
 
     public Minion(int cost, int attack, int maxHealth, String name, Player player, CardClass cardClass){
+        super();
         setCost(cost);
         setAttack(attack);
         initHealth(maxHealth);

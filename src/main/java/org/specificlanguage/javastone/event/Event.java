@@ -1,4 +1,4 @@
-package org.specificlanguage.event;
+package org.specificlanguage.javastone.event;
 
 public interface Event {
 

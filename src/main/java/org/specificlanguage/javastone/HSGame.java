@@ -1,8 +1,7 @@
-package org.specificlanguage;
+package org.specificlanguage.javastone;
 
-import org.specificlanguage.action.Action;
-import org.specificlanguage.entity.Minion;
-import org.specificlanguage.entity.Player;
+import org.specificlanguage.javastone.action.Action;
+import org.specificlanguage.javastone.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;

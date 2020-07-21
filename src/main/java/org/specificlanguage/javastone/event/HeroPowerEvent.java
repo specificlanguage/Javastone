@@ -1,8 +1,7 @@
-package org.specificlanguage.event;
+package org.specificlanguage.javastone.event;
 
-import org.specificlanguage.card.HeroPower;
+import org.specificlanguage.javastone.card.HeroPower;
 
-import java.awt.*;
 import java.util.Objects;
 
 public class HeroPowerEvent implements Event {

@@ -1,11 +1,7 @@
-package org.specificlanguage.card;
+package org.specificlanguage.javastone.card;
 
-import org.specificlanguage.action.Action;
-import org.specificlanguage.entity.Player;
-
-import java.util.EventListener;
-import java.util.EventObject;
-import java.util.Objects;
+import org.specificlanguage.javastone.action.Action;
+import org.specificlanguage.javastone.entity.Player;
 
 public class HeroPower extends Card {
 

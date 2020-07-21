@@ -1,5 +1,6 @@
 package org.specificlanguage.javastone.action;
 
+import org.specificlanguage.javastone.HSGame;
 import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.event.GameEvent;
 
@@ -28,8 +29,10 @@ public class CompoundAction implements Action {
 
     @Override
     public GameEvent createEvent() {
-        // TODO return new CompoundEvent that deals with all events here
-        return null;
+        HSGame game = caster.getGame();
+        for(Action a : actions)
+            game.processEvent(a.createEvent());
+        return null; //CompoundActions are just internal actions that have two things
     }
 
     public List<Action> getActions(){

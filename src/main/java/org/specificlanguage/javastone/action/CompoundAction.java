@@ -1,6 +1,7 @@
 package org.specificlanguage.javastone.action;
 
 import org.specificlanguage.javastone.entity.Entity;
+import org.specificlanguage.javastone.event.GameEvent;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,5 +24,15 @@ public class CompoundAction implements Action {
             action.execute();
         }
         return true;
+    }
+
+    @Override
+    public GameEvent createEvent() {
+        // TODO return new CompoundEvent that deals with all events here
+        return null;
+    }
+
+    public List<Action> getActions(){
+        return actions;
     }
 }

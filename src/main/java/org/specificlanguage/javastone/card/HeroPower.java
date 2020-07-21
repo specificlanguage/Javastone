@@ -1,6 +1,9 @@
 package org.specificlanguage.javastone.card;
 
+import org.specificlanguage.javastone.HSGame;
 import org.specificlanguage.javastone.action.Action;
+import org.specificlanguage.javastone.action.DamageAction;
+import org.specificlanguage.javastone.entity.Future;
 import org.specificlanguage.javastone.entity.Player;
 
 public class HeroPower extends Card {
@@ -9,6 +12,7 @@ public class HeroPower extends Card {
     public String name;
     public String description;
     public boolean playable;
+    private Player player;
 
     public HeroPower(Action action, String name, String description){
         this.action = action;
@@ -25,9 +29,13 @@ public class HeroPower extends Card {
                 // hpaction = new CompoundAction(new GiveHeroAttack(player), new Armor(2, player));
                 // return new HeroPower(hpaction, "....", "Give your hero +1 attack and armor.");
             case HUNTER:
+                return new HeroPower(new DamageAction(player.getOpponent(), player, 2), "Steady Shot",
+                        "Deal 2 damage to the enemy hero.");
                 // return new HeroPower(new DealDamage(2, player.getGame().getOpponent(player),
                 // "....", "Deal 2 damage to your opponent.");
             case MAGE:
+                return new HeroPower(new DamageAction(new Future(), player, 1), "Fireblast",
+                        "Deal 1 damage.");
                 // return new HeroPower(new DealDamage(1, new Future()), "....", "Deal 1 damage.");
             case PALADIN:
                 // return new HeroPower(new Summon(1, 1, 1, 1, "Silver Hand Recruit"), "....", "Summon a 1/1 Silver Hand Recruit.");
@@ -48,9 +56,12 @@ public class HeroPower extends Card {
         return null;
     }
 
-    public boolean execute(){
+    @Override
+    boolean playCard() {
 
+
+
+        playable = false;
         return true;
     }
-
 }

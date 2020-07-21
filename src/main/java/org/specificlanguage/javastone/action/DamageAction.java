@@ -3,13 +3,14 @@ package org.specificlanguage.javastone.action;
 import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.entity.Future;
 import org.specificlanguage.javastone.entity.Player;
+import org.specificlanguage.javastone.event.DamageEvent;
+import org.specificlanguage.javastone.event.GameEvent;
 
-public class Damage extends Targetable {
+public class DamageAction extends Targetable {
 
-    private Entity target;
     private int damage;
 
-    public Damage(Entity target, Entity caster, int damage){
+    public DamageAction(Entity target, Entity caster, int damage){
         if(caster instanceof Future || target == null || caster == null || damage <= 0){
             throw new IllegalArgumentException();
         }
@@ -21,20 +22,25 @@ public class Damage extends Targetable {
 
     @Override
     public boolean execute() {
-        /*
-        if(target instanceof Future) {
-            //reassign target to be done
+        if(target instanceof Future){
+            if(caster instanceof Player){
+                //TODO let them pick the target
+            } else {
+                //TODO pick random target
+            }
         }
 
-         */
 
-        // DamageEvent?
         target.damage(damage);
         return true;
     }
 
     public Entity getCaster(){
         return caster;
+    }
+
+    public GameEvent createEvent(){
+        return new DamageEvent(this);
     }
 
 }

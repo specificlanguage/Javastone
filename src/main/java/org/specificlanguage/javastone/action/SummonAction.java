@@ -4,8 +4,9 @@ import org.specificlanguage.javastone.Board;
 import org.specificlanguage.javastone.card.CardClass;
 import org.specificlanguage.javastone.entity.Minion;
 import org.specificlanguage.javastone.entity.Player;
+import org.specificlanguage.javastone.event.GameEvent;
 
-public class Summon implements Action {
+public class SummonAction implements Action {
 
     private int maxHealth;
     private int attack;
@@ -13,8 +14,9 @@ public class Summon implements Action {
     private String name;
     private Player player;
     private CardClass playerClass;
+    private Minion minion;
 
-    public Summon(int maxHealth, int attack, int cost, String name, Player player){
+    public SummonAction(int maxHealth, int attack, int cost, String name, Player player){
         this.maxHealth = maxHealth;
         this.attack = attack;
         this.cost = cost;
@@ -22,7 +24,7 @@ public class Summon implements Action {
         this.player = player;
     }
 
-    public Summon(int maxHealth, int attack, int cost, String name, Player player, CardClass cardClass){
+    public SummonAction(int maxHealth, int attack, int cost, String name, Player player, CardClass cardClass){
         this(maxHealth, attack, cost, name, player);
         this.playerClass = cardClass;
     }
@@ -34,11 +36,26 @@ public class Summon implements Action {
 
      */
 
+    public SummonAction(Minion minion){
+        this.minion = minion;
+    }
+
+    public GameEvent createEvent(){
+        // return new SummonEvent(this);
+        return null;
+    }
+
+
+
+
     @Override
     public boolean execute() {
+        Minion minion = null;
         if (playerClass == null)
             playerClass = player.playerClass;
-        Minion minion = new Minion(cost, attack, maxHealth, name, player, playerClass);
+        if (this.minion == null)
+            minion = new Minion(cost, attack, maxHealth, name, player, playerClass);
+        else minion = this.minion;
         Board board = player.getGame().getBoard();
         board.summonMinion(player.getGame(), minion, player);
         return true;

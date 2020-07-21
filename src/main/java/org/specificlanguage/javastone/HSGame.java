@@ -1,6 +1,8 @@
 package org.specificlanguage.javastone;
 
+import com.sun.tools.javac.code.Attribute;
 import org.specificlanguage.javastone.action.Action;
+import org.specificlanguage.javastone.action.CompoundAction;
 import org.specificlanguage.javastone.entity.Player;
 import org.specificlanguage.javastone.event.GameEvent;
 import org.specificlanguage.javastone.listener.GameListener;
@@ -11,11 +13,11 @@ public class HSGame {
 
     private Stack<GameEvent> eventStack;
     private List<GameListener> listeners;
-    private Queue<Action> actionQueue;
     public List<Observer> observers = new ArrayList<>();
     public Player player1;
     public Player player2;
     public Board board;
+    public int inControl;
 
     public HSGame(Player p1, Player p2){
         p1.setGame(this); p2.setGame(this);
@@ -37,10 +39,6 @@ public class HSGame {
         } else throw new IllegalArgumentException();
     }
 
-    public Action getNextAction(){
-        return actionQueue.peek();
-    }
-
     public Board getBoard(){
         return board;
     }
@@ -48,18 +46,33 @@ public class HSGame {
     public boolean processEvent(GameEvent event){
         eventStack.push(event);
         List<GameListener> validListeners = listeners;
+        Action a = event.getAction();
 
-        for(GameListener listener : listeners){
-            if(listener.getEvent().getClass() == event.getClass()){
-                listeners.remove(listener);
-                validListeners.add(listener);
-                listener.processEvent();
+        if(a instanceof CompoundAction){
+            for(Action action : ((CompoundAction) a).getActions()){
+
             }
         }
 
-        eventStack.pop();
+        if(event.getAction() instanceof CompoundAction){
+            List<Action> actions = ((CompoundAction) event.getAction()).getActions()
+            for(Action action : actions){
 
+            }
+        } else {
+
+        }
+        eventStack.pop().getAction().execute();
         return true;
+    }
+
+    private void listenerCheck(GameEvent e){
+        for (GameListener listener : listeners) {
+            if (listener.getEvent().getClass() == e.getClass() && listener.checkAction(e.getAction())) {
+                listeners.remove(listener);
+                listener.processEvent(e.getAction());
+            }
+        }
     }
 
 

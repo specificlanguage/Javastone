@@ -1,9 +1,12 @@
 package org.specificlanguage.javastone.entity;
 
+import org.specificlanguage.javastone.HSGame;
+
 public abstract class Entity {
 
     protected int health;
     protected int maxHealth;
+    protected HSGame game;
 
     public int getHealth(){
         return health;
@@ -39,6 +42,14 @@ public abstract class Entity {
         }
         this.health += health;
         return true;
+    }
+
+    public void setGame(HSGame game) {
+        this.game = game;
+    }
+
+    public HSGame getGame(){
+        return game;
     }
 
 

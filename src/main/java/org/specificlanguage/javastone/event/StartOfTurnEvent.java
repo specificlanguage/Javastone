@@ -7,7 +7,7 @@ public class StartOfTurnEvent implements GameEvent{
     // dummy event for executing action
 
     @Override
-    public Action executeAction() {
+    public Action getAction() {
         return null;
     }
 

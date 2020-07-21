@@ -17,7 +17,7 @@ public class HeroPowerEvent implements GameEvent {
         return this.hp;
     }
 
-    public Action executeAction(){
+    public Action getAction(){
         return hp.action;
     }
 

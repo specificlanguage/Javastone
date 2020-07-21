@@ -8,7 +8,6 @@ import org.specificlanguage.javastone.event.HeroPowerEvent;
 
 public class Player extends Entity {
 
-    private HSGame game;
     private Card[] hand;
     private Card[] deck;
     public CardClass playerClass;
@@ -41,18 +40,12 @@ public class Player extends Entity {
         return true;
     }
 
-    public void setGame(HSGame game) {
-        this.game = game;
-    }
-
-    public HSGame getGame(){
-        return game;
-    }
-
-    public Player getOpponent() throws Exception {
-        if (this.game == null)
-            throw new Exception("Game not assigned to player");
-        return getGame().getOpponent(this);
+    public Player getOpponent() {
+        try {
+            return game.getOpponent(this);
+        } catch(Exception e){
+            return null;
+        }
     }
 
     public boolean playHeroPower(){
@@ -61,6 +54,11 @@ public class Player extends Entity {
         return true;
     }
 
+    public boolean drawCard(){
+        // DrawCardEvent dcEvent = new DrawCardEvent(this);
+        // game.processEvent(dcEvent);
 
+        return true;
+    }
 
 }

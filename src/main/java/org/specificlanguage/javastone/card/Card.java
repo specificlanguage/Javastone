@@ -8,4 +8,6 @@ public abstract class Card {
     public Rarity rarity;
     public String id;
 
+    abstract boolean playCard();
+
 }

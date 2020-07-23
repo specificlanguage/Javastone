@@ -57,7 +57,7 @@ public class Minion extends Entity{
 
     public void deathSequence(){
         game.removeListeners(listeners);
-        game.getBoard().removeMinion(this.game, this);
+        game.getBoard().removeMinion(this);
     }
 
 }

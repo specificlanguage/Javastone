@@ -3,78 +3,58 @@ package org.specificlanguage.javastone;
 import org.specificlanguage.javastone.entity.Minion;
 import org.specificlanguage.javastone.entity.Player;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+
 public class Board {
 
     public HSGame game;
-    public Minion[][] board;
+
+    public HashMap<Player, LinkedList<Minion>> board;
 
     public Board(HSGame game){
         this.game = game;
-        board = new Minion[2][7];
+        this.board = new HashMap<>();
+        board.put(game.player1, new LinkedList<Minion>());
+        board.put(game.player2, new LinkedList<Minion>());
     }
 
-    public boolean summonMinion(Minion minion, Player player){
-        int side = game.getSide(player);
-        if(slotsFull(player)) return false;
-        for(int i = 0; i < board[side].length; i++){
-            if(board[side][i] == null){
-                board[side][i] = minion;
-                return true;
-            }
-        }
-        return false; //unable to summon in any position
-    }
-
-    public boolean summonMinion(Minion minion, Player player, int position){
-        int side = game.getSide(player);
-        if(board[side][position - 1] == null){
-
-        }
-        return false;
-    }
-
-    public boolean removeMinion(HSGame game, Minion minion){
-        int side = game.getSide(minion.getPlayerControlled());
-        for(int i = 0; i < board[side].length; i++){
-            if(board[side][i].equals(minion)){
-                for(int j = i + 1; j < board[side].length; j++){
-                    if(j == board[side].length - 1){
-                        board[side][j] = null;
-                        return true;
-                    }
-                    board[side][j] = board[side][j - 1];
-                }
-            }
-        }
-        return false; // minion was never on board
-    }
-
-    public boolean isOnBoard(HSGame game, Minion minion){ ;
-        int side = game.getSide(minion.getPlayerControlled());
-        for(int i = 0; i < board[side].length; i++){
-            if(board[side][i].equals(minion)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public int getNumOpenSlots(Player player){
-        int side = player.getGame().getSide(player);
-        int slots = 7;
-        for(int i = 0; i < board[side].length; i++){
-            if(board[side][i] != null){
-                slots--;
-            }
-        }
-        return slots;
-    }
-
-    public boolean slotsFull(Player player){
-        if(getNumOpenSlots(player) == 0){
+    public boolean summonMinion(Minion minion){
+        LinkedList<Minion> side = board.get(minion.getPlayerControlled());
+        if(!slotsFull(side)){
+            side.addLast(minion);
             return true;
         }
         return false;
+    }
+
+    public boolean summonMinion(Minion minion, int position){
+        LinkedList<Minion> side = board.get(minion.getPlayerControlled());
+        if(!slotsFull(side)){
+            side.add(position - 1, minion);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean removeMinion(Minion minion){
+        LinkedList<Minion> side = board.get(minion.getPlayerControlled());
+        side.remove(minion);
+        return true;
+    }
+
+    public boolean isOnBoard(HSGame game, Minion minion){
+        LinkedList<Minion> side = board.get(minion.getPlayerControlled());
+        return side.contains(minion);
+    }
+
+    public int getNumOpenSlots(Player player){
+        LinkedList<Minion> side = board.get(player);
+        return side.size() - 7;
+    }
+
+    public boolean slotsFull(LinkedList<Minion> side){
+        return side.size() < 7;
     }
 
 }

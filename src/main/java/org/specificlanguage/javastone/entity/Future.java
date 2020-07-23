@@ -7,4 +7,6 @@ public class Future extends Entity{
     public Future(){
 
     }
+
+    //TODO: static method to PICK target
 }

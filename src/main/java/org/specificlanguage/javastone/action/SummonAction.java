@@ -78,7 +78,7 @@ public class SummonAction implements Action {
             minion = new Minion(cost, attack, maxHealth, name, player, playerClass);
         else minion = this.minion;
         Board board = player.getGame().getBoard();
-        board.summonMinion(player.getGame(), minion, player);
+        board.summonMinion(minion);
         return true;
     }
 }

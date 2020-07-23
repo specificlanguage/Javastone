@@ -1,6 +1,7 @@
 package org.specificlanguage.javastone.entity;
 
 import org.specificlanguage.javastone.HSGame;
+import org.specificlanguage.javastone.action.AttackAction;
 import org.specificlanguage.javastone.action.DeathAction;
 import org.specificlanguage.javastone.card.CardClass;
 import org.specificlanguage.javastone.entity.attributes.Attribute;
@@ -29,6 +30,15 @@ public class Minion extends Entity{
         this.id = id;
     }
 
+    public boolean attack(Entity entity){
+        if(entity == this){
+            // send message saying you can't attack yourself!
+            throw new IllegalArgumentException();
+        }
+        new AttackAction(this, entity).execute();
+        return true;
+    }
+
     public boolean setAttack(int attack){
         if (attack < 0)
             return false;
@@ -55,13 +65,14 @@ public class Minion extends Entity{
         game.addListeners(listeners);
     }
 
-    private void deathSequence(){
+    public void deathSequence(){
         game.removeListeners(listeners);
+        // TODO: remove deathrattles
         game.getBoard().removeMinion(this);
     }
 
     public void onDeath(){
-        DeathAction deathAction = new DeathAction(this);
+        new DeathAction(this).execute();
         deathSequence();
     }
 

@@ -33,11 +33,9 @@ public class CompoundAction implements Action {
      * are created, processed and then returned null.
      * @return null, as CompoundEvents aren't registered as events in the game. Each event is created and then processed.
      */
-    @Override
     public GameEvent createEvent() {
         return null; //CompoundActions are just internal actions that have two things
     }
-
     public List<Action> getActions(){
         return actions;
     }

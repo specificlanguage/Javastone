@@ -26,7 +26,6 @@ public class DeathAction implements Action {
     @Override
     public boolean execute() {
         entity.getGame().processEvent(createEvent());
-        entity.onDeath();
         return true;
     }
 

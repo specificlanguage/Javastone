@@ -43,7 +43,7 @@ public class Board {
         return true;
     }
 
-    public boolean isOnBoard(HSGame game, Minion minion){
+    public boolean isOnBoard(Minion minion){
         LinkedList<Minion> side = board.get(minion.getPlayerControlled());
         return side.contains(minion);
     }

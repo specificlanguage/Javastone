@@ -60,4 +60,8 @@ public class Player extends Entity {
         return true;
     }
 
+    @Override
+    public void onDeath() {
+        // game needs to quit itself
+    }
 }

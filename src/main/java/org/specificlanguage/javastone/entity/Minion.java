@@ -1,13 +1,14 @@
 package org.specificlanguage.javastone.entity;
 
 import org.specificlanguage.javastone.HSGame;
+import org.specificlanguage.javastone.action.DeathAction;
 import org.specificlanguage.javastone.card.CardClass;
+import org.specificlanguage.javastone.entity.attributes.Attribute;
 import org.specificlanguage.javastone.listener.GameListener;
 
 public class Minion extends Entity{
 
     public int cost;
-    public int attack;
     public String name;
     public CardClass cardClass;
     public String id;
@@ -50,14 +51,18 @@ public class Minion extends Entity{
         return true;
     }
 
-    public boolean addListeners(){
+    public void addListeners(){
         game.addListeners(listeners);
-        return true;
     }
 
-    public void deathSequence(){
+    private void deathSequence(){
         game.removeListeners(listeners);
         game.getBoard().removeMinion(this);
+    }
+
+    public void onDeath(){
+        DeathAction deathAction = new DeathAction(this);
+        deathSequence();
     }
 
 }

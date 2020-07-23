@@ -1,13 +1,18 @@
 package org.specificlanguage.javastone.entity;
 
 import org.specificlanguage.javastone.HSGame;
+import org.specificlanguage.javastone.entity.attributes.Attribute;
+
+import java.util.List;
 
 public abstract class Entity {
 
-    protected int health;
-    protected int maxHealth;
+    public int health;
+    public int maxHealth;
+    public int attack;
     protected HSGame game;
     protected Player playerControlled;
+    public List<Attribute> attributes;
 
     public int getHealth(){
         return health;
@@ -57,6 +62,17 @@ public abstract class Entity {
         return game;
     }
 
+    public boolean canAttack(){
+        return attack > 0 || !attributes.contains(Attribute.CANT_ATTACK);
+    }
 
+    public abstract void onDeath();
+
+    public boolean isDead(){
+        if(health <= 0){
+            return true;
+        }
+        return false;
+    }
 
 }

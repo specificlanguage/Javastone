@@ -12,6 +12,8 @@ import java.util.*;
 
 public class HSGame {
 
+
+
     private Stack<GameEvent> eventStack;
     private List<GameListener> listeners;
     public List<Observer> observers = new ArrayList<>();
@@ -65,7 +67,7 @@ public class HSGame {
         } else {
 
         }
-        eventStack.pop().getAction().execute();
+        eventStack.peek().getAction().execute();
         return true;
     }
 

@@ -1,10 +1,8 @@
 package org.specificlanguage.javastone.entity;
 
-import org.specificlanguage.javastone.HSGame;
 import org.specificlanguage.javastone.action.AttackAction;
 import org.specificlanguage.javastone.action.DeathAction;
 import org.specificlanguage.javastone.card.CardClass;
-import org.specificlanguage.javastone.entity.attributes.Attribute;
 import org.specificlanguage.javastone.listener.GameListener;
 
 public class Minion extends Entity{

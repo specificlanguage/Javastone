@@ -1,6 +1,5 @@
 package org.specificlanguage.javastone.entity;
 
-import org.specificlanguage.javastone.HSGame;
 import org.specificlanguage.javastone.card.Card;
 import org.specificlanguage.javastone.card.CardClass;
 import org.specificlanguage.javastone.card.HeroPower;

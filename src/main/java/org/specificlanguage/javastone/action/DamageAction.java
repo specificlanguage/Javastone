@@ -21,7 +21,7 @@ public class DamageAction extends Targetable {
 
     private int damage;
 
-    public DamageAction(Entity target, Entity caster, int damage){
+    public DamageAction(Entity caster, Entity target, int damage){
         if(caster instanceof Future || target == null || caster == null || damage <= 0){
             throw new IllegalArgumentException();
         }

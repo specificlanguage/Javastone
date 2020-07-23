@@ -9,6 +9,18 @@ import org.specificlanguage.javastone.event.GameEvent;
 
 public class SummonAction implements Action {
 
+    private class SummonEvent implements GameEvent{
+        public SummonAction action;
+        public SummonEvent(SummonAction action){
+            this.action = action;
+        }
+
+        @Override
+        public Action getAction() {
+            return action;
+        }
+    }
+
     private int maxHealth;
     private int attack;
     private int cost;
@@ -39,13 +51,14 @@ public class SummonAction implements Action {
 
      */
 
-    public SummonAction(Minion minion){
+    public SummonAction(Minion minion, Player player, Entity caster){
         this.minion = minion;
+        this.player = player;
+        this.caster = caster;
     }
 
     public GameEvent createEvent(){
-        // return new SummonEvent(this);
-        return null;
+        return new SummonEvent(this);
     }
 
     @Override

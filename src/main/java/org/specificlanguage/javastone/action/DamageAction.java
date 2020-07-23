@@ -7,6 +7,18 @@ import org.specificlanguage.javastone.event.GameEvent;
 
 public class DamageAction extends Targetable {
 
+    private class DamageEvent implements GameEvent {
+
+        public DamageAction damage;
+        public DamageEvent(DamageAction damage){
+            this.damage = damage;
+        }
+        @Override
+        public Action getAction() {
+            return damage;
+        }
+    }
+
     private int damage;
 
     public DamageAction(Entity target, Entity caster, int damage){
@@ -41,20 +53,6 @@ public class DamageAction extends Targetable {
 
     public GameEvent createEvent(){
         return new DamageEvent(this);
-    }
-
-    private class DamageEvent implements GameEvent {
-
-        public DamageAction damage;
-
-        public DamageEvent(DamageAction damage){
-            this.damage = damage;
-        }
-
-        @Override
-        public Action getAction() {
-            return damage;
-        }
     }
 
 }

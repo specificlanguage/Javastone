@@ -28,15 +28,6 @@ public class Minion extends Entity{
         this.id = id;
     }
 
-    public boolean attack(Entity entity){
-        if(entity == this){
-            // send message saying you can't attack yourself!
-            throw new IllegalArgumentException();
-        }
-        new AttackAction(this, entity).execute();
-        return true;
-    }
-
     public boolean setAttack(int attack){
         if (attack < 0)
             return false;

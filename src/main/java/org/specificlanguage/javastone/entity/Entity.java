@@ -1,6 +1,7 @@
 package org.specificlanguage.javastone.entity;
 
 import org.specificlanguage.javastone.HSGame;
+import org.specificlanguage.javastone.action.AttackAction;
 import org.specificlanguage.javastone.entity.attributes.Attribute;
 
 import java.util.List;
@@ -73,6 +74,15 @@ public abstract class Entity {
             return true;
         }
         return false;
+    }
+
+    public boolean attack(Entity target){
+        if(target == this || !canAttack()){
+            // send message saying you can't attack yourself!
+            throw new IllegalArgumentException();
+        }
+        new AttackAction(this, target).execute();
+        return true;
     }
 
 }

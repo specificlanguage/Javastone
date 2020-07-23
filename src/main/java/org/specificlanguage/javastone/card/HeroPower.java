@@ -1,10 +1,7 @@
 package org.specificlanguage.javastone.card;
 
 import org.specificlanguage.javastone.HSGame;
-import org.specificlanguage.javastone.action.Action;
-import org.specificlanguage.javastone.action.DamageAction;
-import org.specificlanguage.javastone.action.HealAction;
-import org.specificlanguage.javastone.action.SummonAction;
+import org.specificlanguage.javastone.action.*;
 import org.specificlanguage.javastone.entity.Future;
 import org.specificlanguage.javastone.entity.Player;
 import org.specificlanguage.javastone.event.GameEvent;
@@ -63,13 +60,14 @@ public class HeroPower extends Card {
                 // return new HeroPower(new Summon(1, 1, 1, 1, "Silver Hand Recruit"), "....", "Summon a 1/1 Silver Hand Recruit.");
             case PRIEST:
                 return new HeroPower(new HealAction(player, new Future(), 2), "Lesser Heal",
-                        "Restore 2 health");
+                        "Restore 2 Health");
                 // return new HeroPower(new Heal(2, player, "Lesser Heal", "Restore 2 health.");
             case ROGUE:
                 // return new HeroPower(new Equip(1, 2, player),
             case SHAMAN:
                 // return new HeroPower(new SummonTotem(player), "...."  )
             case WARRIOR:
+                return new HeroPower(new ArmorAction(player, 2), "Armor Up!", "Gain 2 Armor.");
                 // return new HeroPower(new Armor(2, player),
             case WARLOCK:
                 // hpaction = new CompoundAction(new DealDamage(2, player), new DrawCard());

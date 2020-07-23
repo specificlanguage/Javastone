@@ -10,6 +10,7 @@ public class Player extends Entity {
     private Card[] deck;
     public CardClass playerClass;
     public HeroPower heroPower;
+    public int armor;
 
     private Player(){
         this.hand = new Card[10];
@@ -62,5 +63,18 @@ public class Player extends Entity {
     @Override
     public void onDeath() {
         // game needs to quit itself
+    }
+
+    @Override
+    public boolean damage(int damage) {
+        int currentArmor = this.armor;
+        if(armor > 0 && damage < armor){
+            armor -= damage;
+            return true;
+        } else if (armor > 0 && damage > armor){
+            armor = 0;
+            damage -= currentArmor;
+        }
+        return super.damage(damage);
     }
 }

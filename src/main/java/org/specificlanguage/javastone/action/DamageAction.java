@@ -3,7 +3,6 @@ package org.specificlanguage.javastone.action;
 import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.entity.Future;
 import org.specificlanguage.javastone.entity.Player;
-import org.specificlanguage.javastone.event.DamageEvent;
 import org.specificlanguage.javastone.event.GameEvent;
 
 public class DamageAction extends Targetable {
@@ -32,8 +31,6 @@ public class DamageAction extends Targetable {
                 //TODO pick random target
             }
         }
-
-
         target.damage(damage);
         return true;
     }
@@ -44,6 +41,20 @@ public class DamageAction extends Targetable {
 
     public GameEvent createEvent(){
         return new DamageEvent(this);
+    }
+
+    private class DamageEvent implements GameEvent {
+
+        public DamageAction damage;
+
+        public DamageEvent(DamageAction damage){
+            this.damage = damage;
+        }
+
+        @Override
+        public Action getAction() {
+            return damage;
+        }
     }
 
 }

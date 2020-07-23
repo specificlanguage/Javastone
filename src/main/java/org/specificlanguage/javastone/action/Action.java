@@ -8,5 +8,6 @@ public interface Action {
 
     boolean execute();
     GameEvent createEvent();
+    Entity getCaster();
 
 }

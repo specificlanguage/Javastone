@@ -22,20 +22,24 @@ public class CompoundAction implements Action {
     @Override
     public boolean execute() {
         for(Action action : actions){
+            caster.getGame().processEvent(action.createEvent());
             action.execute();
         }
         return true;
     }
 
+    /**
+     * createEvent() is different in CompoundActions as CompoundEvents do not exist. Instead, each event in its action queue
+     * are created, processed and then returned null.
+     * @return null, as CompoundEvents aren't registered as events in the game. Each event is created and then processed.
+     */
     @Override
     public GameEvent createEvent() {
-        HSGame game = caster.getGame();
-        for(Action a : actions)
-            game.processEvent(a.createEvent());
         return null; //CompoundActions are just internal actions that have two things
     }
 
     public List<Action> getActions(){
         return actions;
     }
+    public Entity getCaster(){ return caster; }
 }

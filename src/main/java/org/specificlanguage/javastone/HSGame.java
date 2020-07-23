@@ -17,7 +17,7 @@ public class HSGame {
     public Player player1;
     public Player player2;
     public Board board;
-    public int inControl;
+    public int turn;
 
     public HSGame(Player p1, Player p2){
         p1.setGame(this); p2.setGame(this);
@@ -44,6 +44,8 @@ public class HSGame {
     }
 
     public boolean processEvent(GameEvent event){
+        //TODO: Process CompoundActions
+
         eventStack.push(event);
         List<GameListener> validListeners = listeners;
         Action a = event.getAction();
@@ -55,7 +57,7 @@ public class HSGame {
         }
 
         if(event.getAction() instanceof CompoundAction){
-            List<Action> actions = ((CompoundAction) event.getAction()).getActions()
+            List<Action> actions = ((CompoundAction) event.getAction()).getActions();
             for(Action action : actions){
 
             }

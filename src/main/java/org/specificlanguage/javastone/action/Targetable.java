@@ -9,4 +9,9 @@ public abstract class Targetable implements Action {
 
     // future class for targetable actions, like dealing damage
 
+
+    @Override
+    public Entity getCaster() {
+        return caster;
+    }
 }

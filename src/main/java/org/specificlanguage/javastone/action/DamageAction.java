@@ -22,6 +22,9 @@ public class DamageAction extends Targetable {
 
     @Override
     public boolean execute() {
+
+        caster.getGame().processEvent(createEvent());
+
         if(target instanceof Future){
             if(caster instanceof Player){
                 //TODO let them pick the target

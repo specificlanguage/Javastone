@@ -2,6 +2,7 @@ package org.specificlanguage.javastone.action;
 
 import org.specificlanguage.javastone.Board;
 import org.specificlanguage.javastone.card.CardClass;
+import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.entity.Minion;
 import org.specificlanguage.javastone.entity.Player;
 import org.specificlanguage.javastone.event.GameEvent;
@@ -15,22 +16,24 @@ public class SummonAction implements Action {
     private Player player;
     private CardClass playerClass;
     private Minion minion;
+    private Entity caster;
 
-    public SummonAction(int maxHealth, int attack, int cost, String name, Player player){
+    public SummonAction(int maxHealth, int attack, int cost, String name, Player player, Entity caster){
         this.maxHealth = maxHealth;
         this.attack = attack;
         this.cost = cost;
         this.name = name;
         this.player = player;
+        this.caster = caster;
     }
 
-    public SummonAction(int maxHealth, int attack, int cost, String name, Player player, CardClass cardClass){
-        this(maxHealth, attack, cost, name, player);
+    public SummonAction(int maxHealth, int attack, int cost, String name, Player player, Entity caster, CardClass cardClass){
+        this(maxHealth, attack, cost, name, player, caster);
         this.playerClass = cardClass;
     }
 
     /*
-    public Summon(String cardID){
+    public Summon(String cardID, Player player, Entity caster){
         //look up the card so we don't have to?
     }
 
@@ -45,12 +48,17 @@ public class SummonAction implements Action {
         return null;
     }
 
-
-
+    @Override
+    public Entity getCaster() {
+        return caster;
+    }
 
     @Override
     public boolean execute() {
         Minion minion = null;
+        Entity caster = getCaster();
+        caster.getGame().processEvent(createEvent());
+
         if (playerClass == null)
             playerClass = player.playerClass;
         if (this.minion == null)

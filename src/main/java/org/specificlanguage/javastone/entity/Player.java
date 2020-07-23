@@ -4,7 +4,6 @@ import org.specificlanguage.javastone.HSGame;
 import org.specificlanguage.javastone.card.Card;
 import org.specificlanguage.javastone.card.CardClass;
 import org.specificlanguage.javastone.card.HeroPower;
-import org.specificlanguage.javastone.event.HeroPowerEvent;
 
 public class Player extends Entity {
 
@@ -17,6 +16,7 @@ public class Player extends Entity {
         this.hand = new Card[10];
         this.deck = new Card[30];
         initHealth(30);
+        playerControlled = this;
     }
 
     public Player(CardClass cc){
@@ -49,8 +49,7 @@ public class Player extends Entity {
     }
 
     public boolean playHeroPower(){
-        HeroPowerEvent hpEvent = new HeroPowerEvent(this.heroPower);
-        game.processEvent(hpEvent);
+        game.processEvent(heroPower.createEvent());
         return true;
     }
 

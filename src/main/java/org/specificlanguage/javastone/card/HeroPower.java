@@ -3,6 +3,7 @@ package org.specificlanguage.javastone.card;
 import org.specificlanguage.javastone.HSGame;
 import org.specificlanguage.javastone.action.Action;
 import org.specificlanguage.javastone.action.DamageAction;
+import org.specificlanguage.javastone.action.SummonAction;
 import org.specificlanguage.javastone.entity.Future;
 import org.specificlanguage.javastone.entity.Player;
 import org.specificlanguage.javastone.event.GameEvent;
@@ -41,6 +42,8 @@ public class HeroPower extends Card {
                         "Deal 1 damage.");
                 // return new HeroPower(new DealDamage(1, new Future()), "....", "Deal 1 damage.");
             case PALADIN:
+                return new HeroPower(new SummonAction(1, 1, 1, "Silver Hand Recruit",
+                        player, player, CardClass.PALADIN), "Reinforce", "Summon a 1/1 Silver Hand Recruit.");
                 // return new HeroPower(new Summon(1, 1, 1, 1, "Silver Hand Recruit"), "....", "Summon a 1/1 Silver Hand Recruit.");
             case PRIEST:
                 // return new HeroPower(new Heal(2, player, "Lesser Heal", "Restore 2 health.");
@@ -67,18 +70,19 @@ public class HeroPower extends Card {
         return true;
     }
 
+    public GameEvent createEvent(){
+        return new HeroPowerEvent(this);
+    }
+
     public class HeroPowerEvent implements GameEvent {
 
         private final HeroPower hp;
-
         public HeroPowerEvent(HeroPower hp) {
             this.hp = Objects.requireNonNull(hp);
         }
-
         public HeroPower getHeroPower(){
             return this.hp;
         }
-
         public Action getAction(){
             return hp.action;
         }

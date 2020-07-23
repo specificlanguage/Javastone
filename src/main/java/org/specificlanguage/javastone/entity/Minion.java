@@ -1,15 +1,17 @@
 package org.specificlanguage.javastone.entity;
 
+import org.specificlanguage.javastone.HSGame;
 import org.specificlanguage.javastone.card.CardClass;
+import org.specificlanguage.javastone.listener.GameListener;
 
 public class Minion extends Entity{
 
     public int cost;
     public int attack;
     public String name;
-    public Player playerControlled;
     public CardClass cardClass;
     public String id;
+    private GameListener[] listeners;
 
     public Minion(int cost, int attack, int maxHealth, String name, Player player, CardClass cardClass){
         super();
@@ -48,6 +50,14 @@ public class Minion extends Entity{
         return true;
     }
 
+    public boolean addListeners(){
+        game.addListeners(listeners);
+        return true;
+    }
 
+    public void deathSequence(){
+        game.removeListeners(listeners);
+        game.getBoard().removeMinion(this.game, this);
+    }
 
 }

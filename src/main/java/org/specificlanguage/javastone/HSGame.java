@@ -3,6 +3,7 @@ package org.specificlanguage.javastone;
 import com.sun.tools.javac.code.Attribute;
 import org.specificlanguage.javastone.action.Action;
 import org.specificlanguage.javastone.action.CompoundAction;
+import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.entity.Player;
 import org.specificlanguage.javastone.event.GameEvent;
 import org.specificlanguage.javastone.listener.GameListener;
@@ -68,6 +69,14 @@ public class HSGame {
         return true;
     }
 
+    public boolean addListeners(GameListener[] listeners){
+        if(listeners.length == 0) {
+            return false;
+        }
+        this.listeners.addAll(Arrays.asList(listeners));
+        return true;
+    }
+
     private void listenerCheck(GameEvent e){
         for (GameListener listener : listeners) {
             if (listener.getEvent().getClass() == e.getClass() && listener.checkAction(e.getAction())) {
@@ -75,6 +84,18 @@ public class HSGame {
                 listener.processEvent(e.getAction());
             }
         }
+    }
+
+    public boolean removeListeners(GameListener[] listeners){
+        for(GameListener l : listeners) {
+            this.listeners.remove(l);
+        }
+        return true;
+    }
+
+    public boolean isInGame(Entity entity){
+        Player p = entity.getPlayerControlled();
+        return p.equals(player1) || p.equals(player2);
     }
 
 

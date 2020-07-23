@@ -7,9 +7,14 @@ public abstract class Entity {
     protected int health;
     protected int maxHealth;
     protected HSGame game;
+    protected Player playerControlled;
 
     public int getHealth(){
         return health;
+    }
+
+    public Player getPlayerControlled(){
+        return playerControlled;
     }
 
     public boolean damage(int damage){

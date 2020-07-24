@@ -56,7 +56,7 @@ public class HSGame {
             }
         } else for(GameListener gl : listeners){
             if(gl.checkAction(a)){
-                gl.processEvent(a);
+                gl.processEvent(event);
                 listeners.remove(gl);
             }
         }
@@ -74,9 +74,9 @@ public class HSGame {
 
     private void listenerCheck(GameEvent e){
         for (GameListener listener : listeners) {
-            if (listener.getEvent().getClass() == e.getClass() && listener.checkAction(e.getAction())) {
+            if (listener.getEvent().getClass() == e.getClass()) {
                 listeners.remove(listener);
-                listener.processEvent(e.getAction());
+                listener.processEvent(e);
             }
         }
     }

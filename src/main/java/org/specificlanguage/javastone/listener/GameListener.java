@@ -3,13 +3,33 @@ package org.specificlanguage.javastone.listener;
 import org.specificlanguage.javastone.action.Action;
 import org.specificlanguage.javastone.event.GameEvent;
 
-public interface GameListener {
+public class GameListener {
 
-    boolean processEvent(Action action);
-    GameEvent getEvent(); // get property of event
-    boolean getPersistent();
-    boolean checkAction(Action action);
+    GameEvent event;
+    Action action; // TODO: make it so that actions are type-empty at start so we can change them at execution time
 
-    //TODO: every process event needs to at least push itself, then pop itself
+    GameListener(GameEvent event, Action action){
+        this.event = event;
+        this.action = action;
+    }
+
+    public boolean processEvent(GameEvent event) {
+        if(checkAction(event.getAction())){
+            action.execute(); //TODO, do you need to pass something in for processing events to check?
+        }
+        return true;
+    }
+
+    public GameEvent getEvent(){
+        return event;
+    }
+
+    public boolean checkAction(Action action){
+        return this.action.getClass() == action.getClass();
+    }
+
+    public Action getAction(){
+        return action;
+    }
 
 }

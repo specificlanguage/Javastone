@@ -25,22 +25,20 @@ public class SummonAction implements Action {
     private int attack;
     private int cost;
     private String name;
-    private Player player;
     private CardClass playerClass;
     private Minion minion;
     private Entity caster;
 
-    public SummonAction(int maxHealth, int attack, int cost, String name, Player player, Entity caster){
+    public SummonAction(int maxHealth, int attack, int cost, String name, Entity caster){
         this.maxHealth = maxHealth;
         this.attack = attack;
         this.cost = cost;
         this.name = name;
-        this.player = player;
         this.caster = caster;
     }
 
     public SummonAction(int maxHealth, int attack, int cost, String name, Player player, Entity caster, CardClass cardClass){
-        this(maxHealth, attack, cost, name, player, caster);
+        this(maxHealth, attack, cost, name, caster);
         this.playerClass = cardClass;
     }
 
@@ -51,9 +49,8 @@ public class SummonAction implements Action {
 
      */
 
-    public SummonAction(Minion minion, Player player, Entity caster){
+    public SummonAction(Minion minion, Entity caster){
         this.minion = minion;
-        this.player = player;
         this.caster = caster;
     }
 
@@ -73,11 +70,12 @@ public class SummonAction implements Action {
         caster.getGame().processEvent(createEvent());
 
         if (playerClass == null)
-            playerClass = player.playerClass;
+            playerClass = CardClass.NEUTRAL;
         if (this.minion == null)
-            minion = new Minion(cost, attack, maxHealth, name, player, playerClass);
+            minion = new Minion(cost, attack, maxHealth, name, caster.getPlayerControlled(), playerClass);
         else minion = this.minion;
-        Board board = player.getGame().getBoard();
+
+        Board board = caster.getGame().getBoard();
         board.summonMinion(minion);
         return true;
     }

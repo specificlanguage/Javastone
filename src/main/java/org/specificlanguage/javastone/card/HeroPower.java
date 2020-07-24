@@ -31,7 +31,7 @@ public class HeroPower extends Card {
     public boolean playable;
     private Player player;
 
-    public HeroPower(Action action, String name, String description){
+    public HeroPower(Action action, String name, String description, int mana){
         this.action = action;
         this.name = name;
         this.description = description;
@@ -47,30 +47,24 @@ public class HeroPower extends Card {
                 // return new HeroPower(hpaction, "....", "Give your hero +1 attack and armor.");
             case HUNTER:
                 return new HeroPower(new DamageAction(player.getOpponent(), player, 2), "Steady Shot",
-                        "Deal 2 damage to the enemy hero.");
-                // return new HeroPower(new DealDamage(2, player.getGame().getOpponent(player),
-                // "....", "Deal 2 damage to your opponent.");
+                        "Deal 2 damage to the enemy hero.", 2);
             case MAGE:
                 return new HeroPower(new DamageAction(player, new Future(), 1), "Fireblast",
-                        "Deal 1 damage.");
-                // return new HeroPower(new DealDamage(1, new Future()), "....", "Deal 1 damage.");
+                        "Deal 1 damage.", 2);
             case PALADIN:
                 return new HeroPower(new SummonAction(1, 1, 1, "Silver Hand Recruit",
-                        player, player, CardClass.PALADIN), "Reinforce", "Summon a 1/1 Silver Hand Recruit.");
-                // return new HeroPower(new Summon(1, 1, 1, 1, "Silver Hand Recruit"), "....", "Summon a 1/1 Silver Hand Recruit.");
+                        player, player, CardClass.PALADIN), "Reinforce", "Summon a 1/1 Silver Hand Recruit.", 2);
             case PRIEST:
                 return new HeroPower(new HealAction(player, new Future(), 2), "Lesser Heal",
-                        "Restore 2 Health");
-                // return new HeroPower(new Heal(2, player, "Lesser Heal", "Restore 2 health.");
+                        "Restore 2 Health", 2);
             case ROGUE:
                 // return new HeroPower(new Equip(1, 2, player),
             case SHAMAN:
                 // return new HeroPower(new SummonTotem(player), "...."  )
             case WARRIOR:
-                return new HeroPower(new ArmorAction(player, 2), "Armor Up!", "Gain 2 Armor.");
-                // return new HeroPower(new Armor(2, player),
+                return new HeroPower(new ArmorAction(player, 2), "Armor Up!", "Gain 2 Armor.", 2);
             case WARLOCK:
-                // hpaction = new CompoundAction(new DealDamage(2, player), new DrawCard());
+                // hpaction = new CompoundAction(new DealDamage(2, player), new DrawCard(player));
                 // return new HeroPower(new DealDamageAndDrawCard(player),
             default:
                 // return null; // literally can't

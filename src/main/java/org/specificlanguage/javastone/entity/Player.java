@@ -11,12 +11,15 @@ public class Player extends Entity {
     public CardClass playerClass;
     public HeroPower heroPower;
     public int armor;
+    public int usableMana;
+    public int maxMana;
 
     private Player(){
         this.hand = new Card[10];
         this.deck = new Card[30];
         initHealth(30);
         playerControlled = this;
+        maxMana = 0; usableMana = 0;
     }
 
     public Player(CardClass cc){
@@ -85,4 +88,6 @@ public class Player extends Entity {
 
     }
      */
+
+
 }

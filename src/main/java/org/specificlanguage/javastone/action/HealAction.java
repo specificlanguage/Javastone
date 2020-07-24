@@ -49,4 +49,6 @@ public class HealAction implements Action {
     public Entity getCaster() {
         return caster;
     }
+
+    public int getHealth(){ return health; }
 }

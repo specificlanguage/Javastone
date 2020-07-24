@@ -21,7 +21,9 @@ public class DamageAction extends Targetable {
         }
     }
 
-    private int damage;
+    Entity target;
+    Entity caster;
+    int damage;
 
     public DamageAction(Entity caster, Entity target, int damage){
         if(caster instanceof Future || target == null || caster == null || damage <= 0){
@@ -56,5 +58,7 @@ public class DamageAction extends Targetable {
     public GameEvent createEvent(){
         return new DamageEvent(this);
     }
+
+    public int getDamage(){ return damage; }
 
 }

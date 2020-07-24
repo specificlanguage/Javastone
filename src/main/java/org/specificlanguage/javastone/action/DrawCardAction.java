@@ -38,6 +38,7 @@ public class DrawCardAction implements Action {
 
     Player drawer;
     int numCards;
+    Card card;
 
     public DrawCardAction(Player player){
         drawer = player;
@@ -59,7 +60,7 @@ public class DrawCardAction implements Action {
 
         drawer.getGame().processEvent(createEvent());
         for(int i = 0; i < numCards; i++){
-            Card card = drawer.drawCard();
+            this.card = drawer.drawCard();
             drawer.getGame().processEvent(new CardDrawnEvent(this, card));
         }
         return true;

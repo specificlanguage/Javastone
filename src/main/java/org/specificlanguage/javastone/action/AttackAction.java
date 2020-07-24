@@ -21,16 +21,17 @@ public class AttackAction extends Targetable {
         }
     }
 
-    HSGame game;
+    Entity caster;
+    Entity target;
 
     public AttackAction(Entity caster, Entity target){
         this.caster = caster;
         this.target = target;
-        this.game = caster.getGame();
     }
 
     @Override
     public boolean execute() {
+        HSGame game = caster.getGame();
         if(!caster.canAttack()) {
             // send message to player that you can't attack
             return false;

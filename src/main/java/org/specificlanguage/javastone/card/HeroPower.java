@@ -64,8 +64,9 @@ public class HeroPower extends Card {
             case WARRIOR:
                 return new HeroPower(new ArmorAction(player, 2), "Armor Up!", "Gain 2 Armor.", 2);
             case WARLOCK:
-                // hpaction = new CompoundAction(new DealDamage(2, player), new DrawCard(player));
-                // return new HeroPower(new DealDamageAndDrawCard(player),
+                return new HeroPower(new CompoundAction(player, new DamageAction(player, player, 2),
+                        new DrawCardAction(player, 1)), "Life Tap",
+                        "Take 2 damage and draw a card.", 2);
             default:
                 // return null; // literally can't
         }

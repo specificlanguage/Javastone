@@ -7,6 +7,7 @@ import org.specificlanguage.javastone.entity.Minion;
 import org.specificlanguage.javastone.entity.Player;
 import org.specificlanguage.javastone.entity.attributes.Attribute;
 import org.specificlanguage.javastone.event.GameEvent;
+import org.w3c.dom.Attr;
 
 public class AttackAction extends Targetable {
 
@@ -31,18 +32,25 @@ public class AttackAction extends Targetable {
 
     @Override
     public boolean execute() {
-        if(!caster.canAttack()){
-            // send message to player that you can't attack
-            return false;
-        } else if (caster.attributes.contains(Attribute.CANT_ATTACK_HEROES) && target instanceof Player){
+        if(!caster.canAttack()) {
             // send message to player that you can't attack
             return false;
         } else if (caster instanceof Future){
             return false;
         } else if (target instanceof Future){
             // TODO: set target to one's selection
-        } else if (target instanceof Minion && game.getBoard().tauntOnBoard(target.getPlayerControlled()) &&
+        } if (target instanceof Minion && game.getBoard().tauntOnBoard(target.getPlayerControlled()) &&
             !((Minion) target).hasTaunt()){
+            // send message to player that you can't attack
+            return false;
+        } else if (target.attributes.contains(Attribute.STEALTH)){
+            // send message to player that you can't attack
+            return false;
+        } else if (caster.attributes.contains(Attribute.RUSH) && target instanceof Player){
+            // send message to player
+            return false;
+        } else if (caster.attributes.contains(Attribute.CANT_ATTACK_HEROES) && target instanceof Player) {
+            // send message to player that you can't attack
             return false;
         }
 

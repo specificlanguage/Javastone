@@ -21,6 +21,18 @@ public class AttackAction extends Targetable {
         }
     }
 
+    private class AfterAttackEvent implements GameEvent{
+        AttackAction action;
+        AfterAttackEvent(AttackAction action){
+            this.action = action;
+        }
+
+        @Override
+        public Action getAction(){
+            return action;
+        }
+    }
+
     Entity caster;
     Entity target;
 
@@ -31,10 +43,16 @@ public class AttackAction extends Targetable {
 
     @Override
     public boolean execute() {
+
+        // Attack checks
         HSGame game = caster.getGame();
+        assert game.isInGame(caster);
+        assert game.isInGame(target);
         if(!caster.canAttack()) {
             // send message to player that you can't attack
             return false;
+        } else if (caster == target){
+            throw new IllegalArgumentException();
         } else if (caster instanceof Future){
             return false;
         } else if (target instanceof Future){
@@ -54,32 +72,34 @@ public class AttackAction extends Targetable {
             return false;
         }
 
+        // AttackEvent is processed
         game.processEvent(createEvent());
-        if(caster == target){
-            // send message to player that you can't attack yourself (unless overridden by another way, somehow?)
-            throw new IllegalArgumentException();
-        }
+        deathCheck();
+
+        // Attacks
         if(target instanceof Minion){
-            if(caster.isDead()){
-                new DeathAction(caster).execute();
-                return true;
-            } else if(target.isDead()){
-                new DeathAction(target).execute();
-                return true;
-            } if(game.getBoard().isOnBoard((Minion) target)){
-                caster.attack(target);
-                if(target.isDead()){
-                    target.onDeath();
-                } else if (caster.isDead()){
-                    caster.onDeath();
-                }
-            }
+            target.damage(caster.getAttack());
+            caster.damage(target.getAttack());
+        } else {
+            target.damage(caster.getAttack());
         }
+
+        deathCheck();
+        game.processEvent(new AfterAttackEvent(this));
+
         return true;
     }
 
     @Override
     public GameEvent createEvent() {
         return new AttackEvent(this);
+    }
+
+    private void deathCheck(){
+        if(target.isDead()){
+            target.onDeath();
+        } else if (caster.isDead()) {
+            caster.onDeath();
+        }
     }
 }

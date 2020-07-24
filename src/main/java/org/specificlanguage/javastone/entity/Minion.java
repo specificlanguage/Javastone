@@ -61,7 +61,9 @@ public class Minion extends Entity{
 
     public void deathSequence(){
         game.removeListeners(listeners);
-        // TODO: remove deathrattles
+        for(Action action : deathrattles){
+            action.execute();
+        }
         game.getBoard().removeMinion(this);
     }
 

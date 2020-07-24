@@ -88,5 +88,4 @@ public abstract class Entity {
     public int getAttack(){
         return attack;
     }
-
 }

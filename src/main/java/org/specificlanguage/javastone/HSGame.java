@@ -1,5 +1,6 @@
 package org.specificlanguage.javastone;
 
+import com.sun.istack.internal.NotNull;
 import org.specificlanguage.javastone.action.Action;
 import org.specificlanguage.javastone.action.CompoundAction;
 import org.specificlanguage.javastone.entity.Entity;
@@ -21,6 +22,7 @@ public class HSGame {
 
     public HSGame(Player p1, Player p2){
         p1.setGame(this); p2.setGame(this);
+        eventStack = new Stack<GameEvent>();
     }
 
     public Player getOpponent(Player player){
@@ -90,4 +92,6 @@ public class HSGame {
         Player p = entity.getPlayerControlled();
         return p.equals(player1) || p.equals(player2);
     }
+
+    //TODO: search for event in stack (for conditional things)
 }

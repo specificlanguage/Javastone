@@ -1,8 +1,6 @@
 package org.specificlanguage.javastone;
 
-import com.sun.tools.javac.code.Attribute;
 import org.specificlanguage.javastone.action.Action;
-import org.specificlanguage.javastone.action.CompoundAction;
 import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.entity.Player;
 import org.specificlanguage.javastone.event.GameEvent;
@@ -11,8 +9,6 @@ import org.specificlanguage.javastone.listener.GameListener;
 import java.util.*;
 
 public class HSGame {
-
-
 
     private Stack<GameEvent> eventStack;
     private List<GameListener> listeners;
@@ -50,23 +46,15 @@ public class HSGame {
         //TODO: Process CompoundActions
 
         eventStack.push(event);
-        List<GameListener> validListeners = listeners;
         Action a = event.getAction();
 
-        if(a instanceof CompoundAction){
-            for(Action action : ((CompoundAction) a).getActions()){
-
+        for(GameListener gl : listeners){
+            if(gl.checkAction(a)){
+                gl.processEvent(a);
             }
+            listeners.remove(gl);
         }
-
-        if(event.getAction() instanceof CompoundAction){
-            List<Action> actions = ((CompoundAction) event.getAction()).getActions();
-            for(Action action : actions){
-
-            }
-        } else {
-
-        }
+        
         eventStack.peek().getAction().execute();
         return true;
     }
@@ -99,7 +87,5 @@ public class HSGame {
         Player p = entity.getPlayerControlled();
         return p.equals(player1) || p.equals(player2);
     }
-
-
 
 }

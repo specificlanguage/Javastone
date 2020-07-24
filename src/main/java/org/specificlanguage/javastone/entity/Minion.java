@@ -69,4 +69,8 @@ public class Minion extends Entity{
         deathSequence();
     }
 
+    public boolean attack(Entity target){
+        return new AttackAction(this, target).execute();
+    }
+
 }

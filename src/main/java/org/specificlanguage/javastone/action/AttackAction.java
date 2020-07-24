@@ -33,12 +33,14 @@ public class AttackAction extends Targetable {
     public boolean execute() {
         if(!caster.canAttack()){
             // send message to player that you can't attack
-            throw new IllegalArgumentException();
+            return false;
         } else if (caster.attributes.contains(Attribute.CANT_ATTACK_HEROES) && target instanceof Player){
             // send message to player that you can't attack
-            throw new IllegalArgumentException();
-        } else if (caster instanceof Future || target instanceof Future){
-            throw new IllegalArgumentException();
+            return false;
+        } else if (caster instanceof Future){
+            return false;
+        } else if (target instanceof Future){
+            // TODO: set target to one's self
         }
 
         game.processEvent(createEvent());

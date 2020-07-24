@@ -7,7 +7,6 @@ import org.specificlanguage.javastone.entity.Minion;
 import org.specificlanguage.javastone.entity.Player;
 import org.specificlanguage.javastone.entity.attributes.Attribute;
 import org.specificlanguage.javastone.event.GameEvent;
-import org.w3c.dom.Attr;
 
 public class AttackAction extends Targetable {
 

@@ -5,6 +5,8 @@ import org.specificlanguage.javastone.entity.Future;
 import org.specificlanguage.javastone.entity.Player;
 import org.specificlanguage.javastone.event.GameEvent;
 
+import java.util.Random;
+
 public class DamageAction extends Targetable {
 
     private class DamageEvent implements GameEvent {

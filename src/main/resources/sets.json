@@ -1,0 +1,113 @@
+{
+  "sets": [
+    {
+      "Basic": {
+        "alias": "Basic",
+        "setLocation": "basic.json"
+      }
+    },{
+      "Classic": {
+        "alias": "Classic",
+        "setLocation": "classic.json"
+      }
+    },{
+      "Naxxramas": {
+        "alias": "Naxx",
+        "setLocation": "Naxx.json"
+      }
+    },{
+      "Goblins vs. Gnomes": {
+        "alias": "GvG",
+        "setLocation": "GvG.json"
+      }
+    },{
+      "Blackrock Mountain": {
+        "alias": "BRM",
+        "setLocation": "BRM.json"
+      }
+    },{
+      "The Grand Tournament": {
+        "alias": "TGT",
+        "setLocation": "TGT.json"
+      }
+    },{
+      "League of Explorers": {
+        "alias": "LoE",
+        "setLocation": "LoE.json"
+      }
+    },{
+      "Whispers of the Old Gods": {
+        "alias": "WOTOG",
+        "setLocation": "WOTOG.json"
+      }
+    },{
+      "One Night in Karazhan": {
+        "alias": "Kara",
+        "setLocation": "Kara.json"
+      }
+    },{
+      "Mean Streets of Gadgetzan": {
+        "alias": "MSOG",
+        "setLocation": "gadgetzan.json"
+      }
+    },{
+      "Journey to Un'Goro": {
+        "alias": "Un'Goro",
+        "setLocation": "ungoro.json"
+      }
+    },{
+      "Knights of the Frozen Throne": {
+        "alias": "KFT",
+        "setLocation": "kft.json"
+      }
+    },{
+      "Kobolds and Catacombs": {
+        "alias": "KnC",
+        "setLocation": "knc.json"
+      }
+    },{
+      "The Witchwood": {
+        "alias": "WW",
+        "setLocation": "ww.json"
+      }
+    },{
+      "The Boomsday Project": {
+        "alias": "TBP",
+        "setLocation": "boom.json"
+      }
+    },{
+      "Rastakhan's Rumble": {
+        "alias": "Rumble",
+        "setLocation": "rumble.json"
+      }
+    },{
+      "Rise of Shadows": {
+        "alias": "RoS",
+        "setLocation": "ros.json",
+        "standard": 1
+      }
+    },{
+      "Saviors of Uldum": {
+        "alias": "SoU",
+        "setLocation": "sou.json",
+        "standard": 1
+      }
+    },{
+      "Descent of Dragons": {
+        "alias": "DoD",
+        "setLocation": "dod.json",
+        "standard": 1
+      }
+    },{
+      "Ashes of Outland": {
+        "alias": "AoO",
+        "setLocation": "outland.json"
+      }
+    },{
+      "Scholomance Academy": {
+        "alias": "Scholomance",
+        "setLocation": "scholomance.json"
+      }
+    }
+  ]
+}

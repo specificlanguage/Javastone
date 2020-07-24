@@ -90,5 +90,4 @@ public class HSGame {
         Player p = entity.getPlayerControlled();
         return p.equals(player1) || p.equals(player2);
     }
-
 }

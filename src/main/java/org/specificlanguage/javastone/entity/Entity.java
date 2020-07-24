@@ -10,7 +10,7 @@ public abstract class Entity {
 
     public int health;
     public int maxHealth;
-    public int attack;
+    protected int attack;
     protected HSGame game;
     protected Player playerControlled;
     public List<Attribute> attributes;
@@ -83,6 +83,10 @@ public abstract class Entity {
         }
         new AttackAction(this, target).execute();
         return true;
+    }
+
+    public int getAttack(){
+        return attack;
     }
 
 }

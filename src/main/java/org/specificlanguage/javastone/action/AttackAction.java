@@ -40,7 +40,10 @@ public class AttackAction extends Targetable {
         } else if (caster instanceof Future){
             return false;
         } else if (target instanceof Future){
-            // TODO: set target to one's self
+            // TODO: set target to one's selection
+        } else if (target instanceof Minion && game.getBoard().tauntOnBoard(target.getPlayerControlled()) &&
+            !((Minion) target).hasTaunt()){
+            return false;
         }
 
         game.processEvent(createEvent());
@@ -49,9 +52,14 @@ public class AttackAction extends Targetable {
             throw new IllegalArgumentException();
         }
         if(target instanceof Minion){
-            if(game.getBoard().isOnBoard((Minion) target)){
-                target.damage(caster.attack);
-                caster.damage(target.attack);
+            if(caster.isDead()){
+                new DeathAction(caster).execute();
+                return true;
+            } else if(target.isDead()){
+                new DeathAction(target).execute();
+                return true;
+            } if(game.getBoard().isOnBoard((Minion) target)){
+                caster.attack(target);
                 if(target.isDead()){
                     target.onDeath();
                 } else if (caster.isDead()){

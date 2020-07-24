@@ -20,7 +20,7 @@ public class Board {
     }
 
     public boolean summonMinion(Minion minion){
-        LinkedList<Minion> side = board.get(minion.getPlayerControlled());
+        LinkedList<Minion> side = getSide(minion.getPlayerControlled());
         if(!slotsFull(side)){
             side.addLast(minion);
             return true;
@@ -29,7 +29,7 @@ public class Board {
     }
 
     public boolean summonMinion(Minion minion, int position){
-        LinkedList<Minion> side = board.get(minion.getPlayerControlled());
+        LinkedList<Minion> side = getSide(minion.getPlayerControlled());
         if(!slotsFull(side)){
             side.add(position - 1, minion);
             return true;
@@ -38,23 +38,33 @@ public class Board {
     }
 
     public boolean removeMinion(Minion minion){
-        LinkedList<Minion> side = board.get(minion.getPlayerControlled());
-        side.remove(minion);
+        getSide(minion.getPlayerControlled()).remove(minion);
         return true;
     }
 
     public boolean isOnBoard(Minion minion){
-        LinkedList<Minion> side = board.get(minion.getPlayerControlled());
-        return side.contains(minion);
+        return getSide(minion.getPlayerControlled()).contains(minion);
     }
 
     public int getNumOpenSlots(Player player){
-        LinkedList<Minion> side = board.get(player);
-        return side.size() - 7;
+        return getSide(player).size() - 7;
     }
 
     public boolean slotsFull(LinkedList<Minion> side){
         return side.size() < 7;
+    }
+
+    public boolean tauntOnBoard(Player player){
+        for(Minion m : getSide(player)){
+            if (m.hasTaunt()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public LinkedList<Minion> getSide(Player player){
+        return board.get(player);
     }
 
 }

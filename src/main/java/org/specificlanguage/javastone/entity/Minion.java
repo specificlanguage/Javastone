@@ -4,6 +4,7 @@ import org.specificlanguage.javastone.action.Action;
 import org.specificlanguage.javastone.action.AttackAction;
 import org.specificlanguage.javastone.action.DeathAction;
 import org.specificlanguage.javastone.card.CardClass;
+import org.specificlanguage.javastone.entity.attributes.Attribute;
 import org.specificlanguage.javastone.listener.GameListener;
 
 import java.util.List;
@@ -71,6 +72,12 @@ public class Minion extends Entity{
 
     public boolean attack(Entity target){
         return new AttackAction(this, target).execute();
+    }
+
+    public boolean hasTaunt(){
+        if(attributes.contains(Attribute.TAUNT))
+            return true;
+        return false;
     }
 
 }

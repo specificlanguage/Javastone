@@ -2,6 +2,7 @@ package org.specificlanguage.javastone.card;
 
 import org.specificlanguage.javastone.HSGame;
 import org.specificlanguage.javastone.action.*;
+import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.entity.Future;
 import org.specificlanguage.javastone.entity.Player;
 import org.specificlanguage.javastone.event.GameEvent;
@@ -29,13 +30,14 @@ public class HeroPower extends Card {
     public String name;
     public String description;
     public boolean playable;
-    private Player player;
+    public int mana;
 
     public HeroPower(Action action, String name, String description, int mana){
         this.action = action;
         this.name = name;
         this.description = description;
         this.playable = true;
+        this.mana = mana;
     }
 
     public static HeroPower getBasicPowerFromClass(CardClass cc, Player player){
@@ -75,7 +77,19 @@ public class HeroPower extends Card {
 
     @Override
     public boolean playCard() {
+        Entity caster = action.getCaster();
+        if (!(caster instanceof Player)){
+            // find better way to do this?
+            throw new IllegalArgumentException();
+        }
+
+        Player player = (Player) caster;
+        if (player.usableMana < mana){
+            return false;
+        }
+        
         player.getGame().processEvent(new HeroPowerEvent(this));
+        player.usableMana -= mana;
         playable = false;
         this.action.execute(); // will process its own event
         return true;

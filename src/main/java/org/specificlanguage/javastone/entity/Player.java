@@ -77,4 +77,12 @@ public class Player extends Entity {
         }
         return super.damage(damage);
     }
+
+    /*
+    public pickTarget(){
+
+    TODO: pick target
+
+    }
+     */
 }

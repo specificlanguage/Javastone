@@ -9,6 +9,20 @@ import java.util.List;
 
 public class CompoundAction implements Action {
 
+    private class CompoundEvent implements GameEvent{
+
+        public CompoundAction action;
+
+        public CompoundEvent(CompoundAction action){
+            this.action = action;
+        }
+
+        @Override
+        public Action getAction() {
+            return action;
+        }
+    }
+
     List<Action> actions;
     Entity caster;
 
@@ -27,14 +41,8 @@ public class CompoundAction implements Action {
         }
         return true;
     }
-
-    /**
-     * createEvent() is different in CompoundActions as CompoundEvents do not exist. Instead, each event in its action queue
-     * are created, processed and then returned null.
-     * @return null, as CompoundEvents aren't registered as events in the game. Each event is created and then processed.
-     */
     public GameEvent createEvent() {
-        return null; //CompoundActions are just internal actions that have two things
+        return new CompoundEvent(this);
     }
     public List<Action> getActions(){
         return actions;

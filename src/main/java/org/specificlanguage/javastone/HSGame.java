@@ -1,6 +1,7 @@
 package org.specificlanguage.javastone;
 
 import org.specificlanguage.javastone.action.Action;
+import org.specificlanguage.javastone.action.CompoundAction;
 import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.entity.Player;
 import org.specificlanguage.javastone.event.GameEvent;
@@ -43,19 +44,21 @@ public class HSGame {
     }
 
     public boolean processEvent(GameEvent event){
-        //TODO: Process CompoundActions
 
         eventStack.push(event);
         Action a = event.getAction();
 
-        for(GameListener gl : listeners){
+        if(a instanceof CompoundAction){
+            for(Action action : ((CompoundAction) a).getActions()){
+                action.execute(); // nest into the action and resolve those actions
+            }
+        } else for(GameListener gl : listeners){
             if(gl.checkAction(a)){
                 gl.processEvent(a);
+                listeners.remove(gl);
             }
-            listeners.remove(gl);
         }
-        
-        eventStack.peek().getAction().execute();
+
         return true;
     }
 

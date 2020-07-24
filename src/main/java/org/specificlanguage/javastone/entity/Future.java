@@ -8,8 +8,6 @@ public class Future extends Entity{
 
     }
 
-    //TODO: static method to PICK target
-
     public void onDeath(){
 
     }

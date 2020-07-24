@@ -1,9 +1,12 @@
 package org.specificlanguage.javastone.entity;
 
+import org.specificlanguage.javastone.action.Action;
 import org.specificlanguage.javastone.action.AttackAction;
 import org.specificlanguage.javastone.action.DeathAction;
 import org.specificlanguage.javastone.card.CardClass;
 import org.specificlanguage.javastone.listener.GameListener;
+
+import java.util.List;
 
 public class Minion extends Entity{
 
@@ -12,6 +15,7 @@ public class Minion extends Entity{
     public CardClass cardClass;
     public String id;
     private GameListener[] listeners;
+    public List<Action> deathrattles;
 
     public Minion(int cost, int attack, int maxHealth, String name, Player player, CardClass cardClass){
         super();

@@ -36,7 +36,6 @@ public class HealAction implements Action {
         if(this.target.health != this.target.maxHealth) {
             caster.getGame().processEvent(createEvent());
         }
-
         caster.heal(health);
         return true;
     }

@@ -2,6 +2,7 @@ package org.specificlanguage.javastone.card;
 
 import org.specificlanguage.javastone.action.Action;
 import org.specificlanguage.javastone.entity.Player;
+import org.specificlanguage.javastone.entity.attributes.Tribe;
 
 public class CardBuilder {
 
@@ -16,6 +17,8 @@ public class CardBuilder {
     int mana;
     int attack;
     int maxHealth;
+    Tribe tribe;
+    String imagePath;
 
     public CardBuilder(){}
 
@@ -51,9 +54,19 @@ public class CardBuilder {
         this.maxHealth = maxHealth;
     }
 
+    public void setTribe(Tribe tribe) {
+        this.tribe = tribe;
+    }
+
+    public void setImagePath(String path){
+        this.imagePath = path;
+    }
+
     /*
     public Card buildCard(){
         assert (player != null && mana >= 0 && cardType != null);
+
+        check card repository and check it's a valid card
 
         switch(cardType) {
             case CardType.SPELL:

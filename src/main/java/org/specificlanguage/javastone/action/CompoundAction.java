@@ -25,11 +25,21 @@ public class CompoundAction implements Action {
     List<Action> actions;
     Entity caster;
 
+    public CompoundAction(){}
+
     public CompoundAction(Entity caster, Action... actions){
         if(actions == null || caster == null)
             throw new IllegalArgumentException();
         this.caster = caster;
         this.actions = Arrays.asList(actions);
+    }
+
+    public void setCaster(Entity caster){
+        this.caster = caster;
+    }
+
+    public void addAction(Action action){
+        actions.add(action);
     }
 
     @Override

@@ -113,6 +113,4 @@ public class Player extends Entity {
         fatigue++;
         return true;
     }
-
-
 }

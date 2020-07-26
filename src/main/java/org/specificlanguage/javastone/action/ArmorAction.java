@@ -20,9 +20,17 @@ public class ArmorAction implements Action {
     Player player;
     int armor;
 
+    public ArmorAction(int armor){
+        this.armor = armor;
+    }
+
     public ArmorAction(Player player, int armor){
         this.player = player;
         this.armor = armor;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     @Override

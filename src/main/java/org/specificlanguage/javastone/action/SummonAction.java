@@ -49,7 +49,7 @@ public class SummonAction implements Action {
 
      */
 
-    public SummonAction(Minion minion, Entity caster){
+    public SummonAction(Entity caster, Minion minion){
         this.minion = minion;
         this.caster = caster;
     }

@@ -7,8 +7,9 @@ import org.specificlanguage.javastone.entity.Minion;
 import org.specificlanguage.javastone.entity.Player;
 import org.specificlanguage.javastone.entity.attributes.Attribute;
 import org.specificlanguage.javastone.event.GameEvent;
+import org.specificlanguage.javastone.event.TargetableEvent;
 
-public class AttackAction extends Targetable {
+public class AttackAction implements Targetable {
 
     private class AttackEvent implements GameEvent{
 
@@ -59,15 +60,15 @@ public class AttackAction extends Targetable {
             // TODO: set target to one's selection
         } if (target instanceof Minion && game.getBoard().tauntOnBoard(target.getPlayerControlled()) &&
             !((Minion) target).hasTaunt()){
-            // send message to player that you can't attack
+            // send message to player that it can't attack
             return false;
-        } else if (target.attributes.contains(Attribute.STEALTH)){
-            // send message to player that you can't attack
+        } else if (target.getAttributes().contains(Attribute.STEALTH)){
+            // send message to player that it can't attack it
             return false;
-        } else if (caster.attributes.contains(Attribute.RUSH) && target instanceof Player){
+        } else if (caster.getAttributes().contains(Attribute.RUSH) && target instanceof Player){
             // send message to player
             return false;
-        } else if (caster.attributes.contains(Attribute.CANT_ATTACK_HEROES) && target instanceof Player) {
+        } else if (caster.getAttributes().contains(Attribute.CANT_ATTACK_HEROES) && target instanceof Player) {
             // send message to player that you can't attack
             return false;
         }
@@ -101,5 +102,20 @@ public class AttackAction extends Targetable {
         } else if (caster.isDead()) {
             caster.onDeath();
         }
+    }
+
+    @Override
+    public Entity getTarget(){
+        return target;
+    }
+
+    @Override
+    public TargetableEvent createTargetableEvent() {
+        return new TargetableEvent(this);
+    }
+
+    @Override
+    public Entity getCaster(){
+        return caster;
     }
 }

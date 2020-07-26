@@ -4,6 +4,7 @@ import org.specificlanguage.javastone.action.Action;
 import org.specificlanguage.javastone.action.AttackAction;
 import org.specificlanguage.javastone.action.DeathAction;
 import org.specificlanguage.javastone.card.CardClass;
+import org.specificlanguage.javastone.enchantment.Enchantment;
 import org.specificlanguage.javastone.entity.attributes.Attribute;
 import org.specificlanguage.javastone.entity.attributes.Tribe;
 import org.specificlanguage.javastone.listener.GameListener;
@@ -12,13 +13,15 @@ import java.util.List;
 
 public class Minion extends Entity{
 
-    public int cost;
-    public String name;
-    public CardClass cardClass;
-    public String id;
+    private int cost;
+    private String name;
+    private CardClass cardClass;
+    private String id;
     private GameListener[] listeners;
-    public List<Action> deathrattles;
-    public Tribe tribe;
+    private List<Action> deathrattles;
+    private Tribe tribe;
+    private List<Attribute> attributes;
+    private List<Enchantment> enchantments;
 
     public Minion(int cost, int attack, int maxHealth, String name, Player player, CardClass cardClass){
         super();
@@ -84,4 +87,8 @@ public class Minion extends Entity{
         return false;
     }
 
+    public boolean clearAttributes(){
+        this.attributes.clear();
+        return true;
+    }
 }

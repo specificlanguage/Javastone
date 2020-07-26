@@ -1,6 +1,5 @@
 package org.specificlanguage.javastone;
 
-import com.sun.istack.internal.NotNull;
 import org.specificlanguage.javastone.action.Action;
 import org.specificlanguage.javastone.action.CompoundAction;
 import org.specificlanguage.javastone.entity.Entity;

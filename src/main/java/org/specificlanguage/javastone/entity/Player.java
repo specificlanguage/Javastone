@@ -12,11 +12,11 @@ public class Player extends Entity {
 
     private LinkedList<Card> hand;
     private List<Card> deck;
-    public CardClass playerClass;
-    public HeroPower heroPower;
-    public int armor;
-    public int usableMana;
-    public int maxMana;
+    private CardClass playerClass;
+    private HeroPower heroPower;
+    private int armor;
+    private int usableMana;
+    private int maxMana;
     private int fatigue;
 
     private Player(){
@@ -111,6 +111,30 @@ public class Player extends Entity {
 
     public boolean incFatigue(){
         fatigue++;
+        return true;
+    }
+
+    public int getMaxMana() {
+        return maxMana;
+    }
+
+    public int getUsableMana(){
+        return usableMana;
+    }
+
+    public boolean useMana(int mana){
+        this.usableMana -= mana;
+        return true;
+    }
+
+    public boolean addEmptyManaCrystals(int mana){
+        this.maxMana += mana;
+        return true;
+    }
+
+    public boolean addManaCrystals(int mana){
+        this.maxMana += mana;
+        this.usableMana += mana;
         return true;
     }
 }

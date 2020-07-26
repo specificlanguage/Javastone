@@ -98,4 +98,8 @@ public class HeroPower extends Card {
     public GameEvent createEvent(){
         return new HeroPowerEvent(this);
     }
+
+    public boolean isPlayable(){
+        return true;
+    }
 }

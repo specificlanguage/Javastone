@@ -8,16 +8,18 @@ import java.util.List;
 
 public abstract class Entity {
 
-    public int health;
-    public int maxHealth;
+    protected int health;
+    protected int maxHealth;
     protected int attack;
     protected HSGame game;
     protected Player playerControlled;
-    public List<Attribute> attributes;
+    protected List<Attribute> attributes;
 
     public int getHealth(){
         return health;
     }
+
+    public int getMaxHealth(){ return maxHealth; }
 
     public Player getPlayerControlled(){
         return playerControlled;
@@ -87,5 +89,18 @@ public abstract class Entity {
 
     public int getAttack(){
         return attack;
+    }
+
+    public List<Attribute> getAttributes() {
+        return attributes;
+    }
+
+    public void addAttributes(List<Attribute> attribute) {
+        this.attributes.addAll(attribute);
+    }
+
+    public boolean removeAttribute(Attribute attribute){
+        this.attributes.remove(attribute);
+        return true;
     }
 }

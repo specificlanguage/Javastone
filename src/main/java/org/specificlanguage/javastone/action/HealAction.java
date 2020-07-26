@@ -2,8 +2,9 @@ package org.specificlanguage.javastone.action;
 
 import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.event.GameEvent;
+import org.specificlanguage.javastone.event.TargetableEvent;
 
-public class HealAction implements Action {
+public class HealAction implements Targetable {
 
     private class HealEvent implements GameEvent{
 
@@ -33,8 +34,9 @@ public class HealAction implements Action {
      */
     @Override
     public boolean execute() {
-        if(this.target.health != this.target.maxHealth) {
+        if(this.target.getHealth() != this.target.getMaxHealth()) {
             caster.getGame().processEvent(createEvent());
+            caster.getGame().processEvent(createTargetableEvent());
         }
         caster.heal(health);
         return true;
@@ -48,6 +50,16 @@ public class HealAction implements Action {
     @Override
     public Entity getCaster() {
         return caster;
+    }
+
+    @Override
+    public Entity getTarget() {
+        return target;
+    }
+
+    @Override
+    public TargetableEvent createTargetableEvent() {
+        return new TargetableEvent(this);
     }
 
     public int getHealth(){ return health; }

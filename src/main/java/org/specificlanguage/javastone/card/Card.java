@@ -12,6 +12,6 @@ public abstract class Card {
     public String id;
 
     abstract boolean playCard();
-
+    abstract boolean isPlayable();
 
 }

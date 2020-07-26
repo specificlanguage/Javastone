@@ -1,17 +1,13 @@
 package org.specificlanguage.javastone.action;
 
 import org.specificlanguage.javastone.entity.Entity;
+import org.specificlanguage.javastone.event.GameEvent;
+import org.specificlanguage.javastone.event.TargetableEvent;
 
-public abstract class Targetable implements Action {
+public interface Targetable extends Action{
 
-    public Entity caster;
-    public Entity target;
+    Entity getTarget();
 
-    // future class for targetable actions, like dealing damage
+    TargetableEvent createTargetableEvent();
 
-
-    @Override
-    public Entity getCaster() {
-        return caster;
-    }
 }

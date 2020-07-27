@@ -25,7 +25,7 @@ public class GameListener {
     }
 
     public boolean checkAction(Action action){
-        return this.event.getAction().getClass() == action.getClass();
+        return this.action.getClass() == action.getClass();
     }
 
     public Action getAction(){

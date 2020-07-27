@@ -7,7 +7,7 @@ import org.specificlanguage.javastone.entity.attributes.Tribe;
 public class CardBuilder {
 
     public enum CardType{
-        SPELL, MINION, WEAPON, HERO, HERO_POWER;
+        SPELL, MINION, WEAPON, HERO;
     }
 
     Player player;
@@ -78,8 +78,6 @@ public class CardBuilder {
                 // create Weapon CArd
             case CardType.WEAPON:
                 // create Hero Card
-            case CardType.HERO_POWER:
-                // create HeroPower "Card"
             }
         }
 

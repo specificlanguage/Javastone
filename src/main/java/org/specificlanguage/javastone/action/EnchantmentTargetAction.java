@@ -10,7 +10,7 @@ public class EnchantmentTargetAction extends EnchantmentAction implements Target
 
     Minion target;
 
-    public EnchantmentTargetAction(Enchantment enchantment, Entity caster, Minion target) {
+    EnchantmentTargetAction(Enchantment enchantment, Entity caster, Minion target) {
         super(enchantment, caster);
         this.target = target;
     }

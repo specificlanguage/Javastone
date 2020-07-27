@@ -18,7 +18,6 @@ public class Player extends Entity {
     private int usableMana;
     private int maxMana;
     private int fatigue;
-    // private List<Aura> auras;
 
     private Player(){
         this.hand = new LinkedList<>();
@@ -137,13 +136,5 @@ public class Player extends Entity {
         this.maxMana += mana;
         this.usableMana += mana;
         return true;
-    }
-
-    public int getArmor(){
-        return armor;
-    }
-
-    public void setArmor(int armor){
-        this.armor += armor;
     }
 }

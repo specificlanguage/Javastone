@@ -1,6 +1,5 @@
 package org.specificlanguage.javastone.card;
 
-import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.entity.Player;
 
 public abstract class Card {
@@ -12,7 +11,7 @@ public abstract class Card {
     public Rarity rarity;
     public String id;
 
-    abstract boolean playCard(Entity caster);
+    abstract boolean playCard();
     abstract boolean isPlayable();
 
 }

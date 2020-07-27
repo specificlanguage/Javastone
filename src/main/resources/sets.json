@@ -123,6 +123,13 @@
         "standard": 1
       }
     },{
+      "Initiate": {
+        "alias": "DH",
+        "prefix": "BT",
+        "setLocation": "dh_initiate.json",
+        "standard": 1
+      }
+    },{
       "Ashes of Outland": {
         "alias": "AoO",
         "prefix": "BT",

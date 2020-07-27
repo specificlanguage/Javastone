@@ -26,11 +26,11 @@ public class HeroPower extends Card {
 
     }
 
-    public Action action;
-    public String name;
-    public String description;
-    public boolean playable;
-    public int mana;
+    private Action action;
+    private String name;
+    private String description;
+    private boolean playable;
+    private int mana;
 
     public HeroPower(Action action, String name, String description, int mana){
         this.action = action;
@@ -84,12 +84,12 @@ public class HeroPower extends Card {
         }
 
         Player player = (Player) caster;
-        if (player.usableMana < mana){
+        if (player.getUsableMana() < mana){
             return false;
         }
         
         player.getGame().processEvent(new HeroPowerEvent(this));
-        player.usableMana -= mana;
+        player.useMana(mana);
         playable = false;
         this.action.execute(); // will process its own event
         return true;

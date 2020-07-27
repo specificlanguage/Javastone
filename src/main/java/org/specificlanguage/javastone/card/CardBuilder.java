@@ -26,40 +26,49 @@ public class CardBuilder {
         this.player = player;
     }
 
-    public void setPlayer(Player player) {
+    public CardBuilder setPlayer(Player player) {
         this.player = player;
+        return this;
     }
 
-    public void setAction(Action action){
+    public CardBuilder setAction(Action action){
         this.action = action;
+        return this;
     }
 
-    public void setCardType(CardType cardType){
+    public CardBuilder setCardType(CardType cardType){
         this.cardType = cardType;
+        return this;
     }
 
-    public void setCardClass(CardClass cardClass){
+    public CardBuilder setCardClass(CardClass cardClass){
         this.cardClass = cardClass;
+        return this;
     }
 
-    public void setMana(int mana) {
+    public CardBuilder setMana(int mana) {
         this.mana = mana;
+        return this;
     }
 
-    public void setAttack(int attack) {
+    public CardBuilder setAttack(int attack) {
         this.attack = attack;
+        return this;
     }
 
-    public void setMaxHealth(int maxHealth){
+    public CardBuilder setMaxHealth(int maxHealth){
         this.maxHealth = maxHealth;
+        return this;
     }
 
-    public void setTribe(Tribe tribe) {
+    public CardBuilder setTribe(Tribe tribe) {
         this.tribe = tribe;
+        return this;
     }
 
-    public void setImagePath(String path){
+    public CardBuilder setImagePath(String path){
         this.imagePath = path;
+        return this;
     }
 
     /*

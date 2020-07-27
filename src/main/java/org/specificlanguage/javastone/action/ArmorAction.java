@@ -36,7 +36,7 @@ public class ArmorAction implements Action {
     @Override
     public boolean execute() {
         player.getGame().processEvent(createEvent());
-        player.armor += armor;
+        player.addArmor(armor);
         return true;
     }
 

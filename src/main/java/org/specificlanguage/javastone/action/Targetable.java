@@ -7,7 +7,6 @@ import org.specificlanguage.javastone.event.TargetableEvent;
 public interface Targetable extends Action{
 
     Entity getTarget();
-
     TargetableEvent createTargetableEvent();
 
 }

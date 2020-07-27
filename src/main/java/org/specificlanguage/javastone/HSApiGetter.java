@@ -10,7 +10,7 @@ public class HSApiGetter {
 
     public static void main(String[] args){
         try {
-            File file = new File("api_key.txt");
+            File file = new File(HSApiGetter.class.getResource("api_key.txt").getFile());
             Scanner scanner = new Scanner(file);
             String api_key = scanner.next();
 

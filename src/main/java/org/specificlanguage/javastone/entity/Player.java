@@ -137,4 +137,8 @@ public class Player extends Entity {
         this.usableMana += mana;
         return true;
     }
+
+    public void addArmor(int armor){
+        this.armor += armor;
+    }
 }

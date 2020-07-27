@@ -26,11 +26,11 @@ public class HeroPower extends Card {
 
     }
 
-    public Action action;
-    public String name;
-    public String description;
-    public boolean playable;
-    public int mana;
+    private Action action;
+    private String name;
+    private String description;
+    private boolean playable;
+    private int mana;
 
     public HeroPower(Action action, String name, String description, int mana){
         this.action = action;

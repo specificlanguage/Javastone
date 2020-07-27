@@ -21,8 +21,6 @@ public class HSApiGetter {
         } catch(Exception e){
             e.printStackTrace();
         }
-
-
     }
 
     

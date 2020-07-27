@@ -12,7 +12,7 @@ import java.util.*;
 public class HSGame {
 
     private Stack<GameEvent> eventStack;
-    private List<GameListener> listeners;
+    private LinkedList<GameListener> listeners;
     public List<Observer> observers = new ArrayList<>();
     public Player player1;
     public Player player2;
@@ -63,11 +63,11 @@ public class HSGame {
         return true;
     }
 
-    public boolean addListeners(GameListener[] listeners){
-        if(listeners.length == 0) {
+    public boolean addListeners(LinkedList<GameListener> listeners){
+        if(listeners.size() == 0){
             return false;
         }
-        this.listeners.addAll(Arrays.asList(listeners));
+        this.listeners.addAll(listeners);
         return true;
     }
 
@@ -80,11 +80,13 @@ public class HSGame {
         }
     }
 
-    public boolean removeListeners(GameListener[] listeners){
-        for(GameListener l : listeners) {
-            this.listeners.remove(l);
-        }
+    public boolean removeListener(GameListener listener){
+        this.listeners.remove(listener);
         return true;
+    }
+
+    public List<GameListener> getListeners(){
+        return this.listeners;
     }
 
     public boolean isInGame(Entity entity){

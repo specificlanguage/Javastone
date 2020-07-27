@@ -1,14 +1,15 @@
 package org.specificlanguage.javastone.entity;
 
-import org.specificlanguage.javastone.action.Action;
 import org.specificlanguage.javastone.action.AttackAction;
 import org.specificlanguage.javastone.action.DeathAction;
 import org.specificlanguage.javastone.card.CardClass;
 import org.specificlanguage.javastone.enchantment.Enchantment;
 import org.specificlanguage.javastone.entity.attributes.Attribute;
 import org.specificlanguage.javastone.entity.attributes.Tribe;
+import org.specificlanguage.javastone.event.GameEvent;
 import org.specificlanguage.javastone.listener.GameListener;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Minion extends Entity{
@@ -17,8 +18,8 @@ public class Minion extends Entity{
     private String name;
     private CardClass cardClass;
     private String id;
-    private GameListener[] listeners;
-    private List<Action> deathrattles;
+    private LinkedList<GameListener> listeners;
+    private List<GameEvent> deathrattles;
     private Tribe tribe;
     private List<Attribute> attributes;
     private List<Enchantment> enchantments;
@@ -31,6 +32,10 @@ public class Minion extends Entity{
         this.name = name;
         this.playerControlled = player;
         this.cardClass = cardClass;
+        this.attributes = new LinkedList<>();
+        this.enchantments = new LinkedList<>();
+        this.deathrattles = new LinkedList<>();
+        this.listeners = new LinkedList<>();
     }
 
     public Minion(int cost, int attack, int maxHealth, String name, Player player, CardClass cardClass, String id){
@@ -60,14 +65,17 @@ public class Minion extends Entity{
         return true;
     }
 
-    public void addListeners(){
-        game.addListeners(listeners);
+    public void addListener(){
+        game.addListeners(this.listeners);
     }
 
     public void deathSequence(){
-        game.removeListeners(listeners);
-        for(Action action : deathrattles){
-            action.execute();
+        for(GameListener gl : game.getListeners()){
+            game.removeListener(gl);
+        }
+
+        for(GameEvent e : deathrattles){
+            e.getAction().execute();
         }
         game.getBoard().removeMinion(this);
     }
@@ -90,5 +98,44 @@ public class Minion extends Entity{
     public boolean clearAttributes(){
         this.attributes.clear();
         return true;
+    }
+
+    public boolean addEnchantments(List<Enchantment> enchantments){
+        for(Enchantment e : enchantments){
+            if(e == null){
+                throw new IllegalArgumentException();
+            }
+        }
+        this.enchantments.addAll(enchantments);
+        return true;
+    }
+
+    public void removeAllEnchantments(){
+        this.enchantments.clear();
+    }
+
+    public boolean removeEnchantment(Enchantment enchantment){
+        this.enchantments.remove(enchantment);
+        return true;
+    }
+
+    public List<Enchantment> getEnchantments(){
+        return this.enchantments;
+    }
+
+    public List<GameEvent> getDeathrattles(){
+        return this.deathrattles;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public CardClass getCardClass(){
+        return cardClass;
+    }
+
+    public String getName(){
+        return name;
     }
 }

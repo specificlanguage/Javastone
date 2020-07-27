@@ -1,4 +1,5 @@
 /.idea/
 *.class
 target/classes/sets.json
-src/api_key.txt
+src/main/resources/api_key.txt
+*.kotlin_module

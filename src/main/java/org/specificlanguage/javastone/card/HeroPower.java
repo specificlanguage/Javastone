@@ -76,20 +76,19 @@ public class HeroPower extends Card {
     }
 
     @Override
-    public boolean playCard() {
-        Entity caster = action.getCaster();
+    public boolean playCard(Entity caster) {
         if (!(caster instanceof Player)){
             // find better way to do this?
             throw new IllegalArgumentException();
         }
 
         Player player = (Player) caster;
-        if (player.usableMana < mana){
+        if (player.getUsableMana() < mana){
             return false;
         }
         
         player.getGame().processEvent(new HeroPowerEvent(this));
-        player.usableMana -= mana;
+        player.useMana(mana);
         playable = false;
         this.action.execute(); // will process its own event
         return true;

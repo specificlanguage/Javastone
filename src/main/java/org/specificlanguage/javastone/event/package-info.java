@@ -6,7 +6,7 @@ package org.specificlanguage.javastone.event;
  *
  * StartOfTurnEvent & EndOfTurnEvent - pretty self explanatory
  * TargetableEvent - used for all targetable classes
- *
+ * PlayCardEvent - used for all Card classes, also interface to extend from for easy creation
  *
  *
  *

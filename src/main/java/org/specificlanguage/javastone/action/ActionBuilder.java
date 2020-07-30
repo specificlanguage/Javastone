@@ -1,5 +1,6 @@
 package org.specificlanguage.javastone.action;
 
+import org.specificlanguage.javastone.enchantment.Enchantment;
 import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.entity.Future;
 import org.specificlanguage.javastone.entity.Minion;
@@ -7,7 +8,7 @@ import org.specificlanguage.javastone.entity.Minion;
 public class ActionBuilder {
 
     public enum ActionType{
-        ARMOR, ATTACK, COMPOUND, DAMAGE, DEATH, DRAW_CARD, HEAL, SUMMON
+        ARMOR, ATTACK, COMPOUND, DAMAGE, DEATH, DRAW_CARD, HEAL, SUMMON, ENCHANT;
     }
 
     Entity caster;
@@ -22,29 +23,47 @@ public class ActionBuilder {
     // Summon
     Minion minion;
 
+    // Enchantment
+    Enchantment enchantment;
+
+
+
+
+
+
     public ActionBuilder(Entity caster, ActionType actionType){
         this.caster = caster;
         this.actionType = actionType;
     }
 
-    public void setActionType(ActionType actionType) {
+    public ActionBuilder setActionType(ActionType actionType) {
         this.actionType = actionType;
+        return this;
     }
 
-    public void setVal(int val) {
+    public ActionBuilder setVal(int val) {
         this.val = val;
+        return this;
     }
 
-    public void setCaster(Entity caster) {
+    public ActionBuilder setCaster(Entity caster) {
         this.caster = caster;
+        return this;
     }
 
-    public void setMinion(Minion minion) {
+    public ActionBuilder setMinion(Minion minion) {
         this.minion = minion;
+        return this;
     }
 
-    public void setTarget(Entity target) {
+    public ActionBuilder setTarget(Entity target) {
         this.target = target;
+        return this;
+    }
+
+    public ActionBuilder setEnchantment(Enchantment enchantment){
+        this.enchantment = enchantment;
+        return this;
     }
 
     public Action createAction(){
@@ -69,6 +88,14 @@ public class ActionBuilder {
             case SUMMON:
                 assert(minion != null);
                 return new SummonAction(caster, minion);
+            case ENCHANT:
+                assert(enchantment != null);
+                if(target == null || !(target instanceof Minion)){
+                    return new EnchantmentAction(enchantment, caster);
+                } else {
+                    return new EnchantmentTargetAction(enchantment, caster, (Minion) target);
+                }
+
 
             case COMPOUND:
                 return new CompoundAction();

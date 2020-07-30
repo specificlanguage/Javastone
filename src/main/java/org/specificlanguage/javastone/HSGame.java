@@ -11,7 +11,7 @@ import java.util.*;
 
 public class HSGame {
 
-    private Stack<GameEvent> eventStack;
+    private LinkedList<GameEvent> events;
     private LinkedList<GameListener> listeners;
     public List<Observer> observers = new ArrayList<>();
     public Player player1;
@@ -21,7 +21,7 @@ public class HSGame {
 
     public HSGame(Player p1, Player p2){
         p1.setGame(this); p2.setGame(this);
-        eventStack = new Stack<GameEvent>();
+        events = new LinkedList<>();
     }
 
     public Player getOpponent(Player player){
@@ -46,7 +46,7 @@ public class HSGame {
 
     public boolean processEvent(GameEvent event){
 
-        eventStack.push(event);
+        events.push(event);
         Action a = event.getAction();
 
         if(a instanceof CompoundAction){

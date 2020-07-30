@@ -1,7 +1,8 @@
-/.idea/
-*.class
-target/classes/
+.idea/
+target/
+
 src/main/resources/api_key.txt
-*.kotlin_module
-/target/
 target/classes/api_key.txt
+
+*.class
+*.kotlin_module

@@ -14,7 +14,6 @@ public class SpellCard extends Card{
             this.card = card;
         }
 
-        @Override
         public Action getAction() {
             return card.getAction();
         }

@@ -33,7 +33,6 @@ public class Enchantment {
     }
 
     public void execute(){
-
         target.setAttack(target.getAttack() + attack);
         target.setHealth(target.getHealth() + health);
         if(!attribute.isEmpty()){

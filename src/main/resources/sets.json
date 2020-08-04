@@ -1,148 +1,130 @@
 {
   "sets": [
     {
-      "Basic": {
+        "name": "Basic",
         "alias": "Basic",
         "setLocation": "basic.json"
-      }
+    },
+    {
+      "name": "Naxxramas",
+      "alias": "Classic",
+      "setLocation": "classic.json"
     },{
-      "Classic": {
-        "alias": "Classic",
-        "setLocation": "classic.json"
-      }
+      "name": "Hall of Fame",
+      "alias": "HoF",
+      "setLocation": "hof.json"
     },{
-      "Naxxramas": {
-        "alias": "Naxx",
-        "prefix": "FP1",
-        "setLocation": "Naxx.json"
-      }
+      "name": "Naxxramas",
+      "alias": "Naxx",
+      "prefix": "FP1",
+      "setLocation": "Naxx.json"
     },{
-      "Goblins vs. Gnomes": {
-        "alias": "GvG",
-        "prefix": "GVG",
-        "setLocation": "GvG.json"
-      }
+      "name": "Goblins vs Gnomes",
+      "alias": "GvG",
+      "prefix": "GVG",
+      "setLocation": "GvG.json"
     },{
-      "Blackrock Mountain": {
-        "alias": "BRM",
-        "prefix": "BRM",
-        "setLocation": "BRM.json"
-      }
+      "name": "Blackrock Mountain",
+      "alias": "BRM",
+      "prefix": "BRM",
+      "setLocation": "BRM.json"
     },{
-      "The Grand Tournament": {
-        "alias": "TGT",
-        "prefix": "AT",
-        "setLocation": "TGT.json"
-      }
+      "name": "The Grand Tournament",
+      "alias": "TGT",
+      "prefix": "AT",
+      "setLocation": "TGT.json"
     },{
-      "League of Explorers": {
-        "alias": "LoE",
-        "prefix": "LOE",
-        "setLocation": "LoE.json"
-      }
+      "name": "League of Explorers",
+      "alias": "LoE",
+      "prefix": "LOE",
+      "setLocation": "LoE.json"
     },{
-      "Whispers of the Old Gods": {
-        "alias": "WOTOG",
-        "prefix": "OG",
-        "setLocation": "WOTOG.json"
-      }
+      "name": "Whispers of the Old Gods",
+      "alias": "WOTOG",
+      "prefix": "OG",
+      "setLocation": "WOTOG.json"
     },{
-      "One Night in Karazhan": {
-        "alias": "Kara",
-        "prefix": "KAR",
-        "setLocation": "Kara.json"
-      }
+      "name": "Karazhan",
+      "alias": "Kara",
+      "prefix": "KAR",
+      "setLocation": "Kara.json"
     },{
-      "Mean Streets of Gadgetzan": {
-        "alias": "MSOG",
-        "prefix": "CFM",
-        "setLocation": "gadgetzan.json"
-      }
+      "name": "Mean Streets of Gadgetzan",
+      "alias": "MSOG",
+      "prefix": "CFM",
+      "setLocation": "gadgetzan.json"
     },{
-      "Journey to Un'Goro": {
-        "alias": "Un'Goro",
-        "prefix": "UNG",
-        "setLocation": "ungoro.json"
-      }
+      "name": "Journey to Un'Goro",
+      "alias": "Un'Goro",
+      "prefix": "UNG",
+      "setLocation": "ungoro.json"
     },{
-      "Knights of the Frozen Throne": {
-        "alias": "KFT",
-        "prefix": "ICC",
-        "setLocation": "kft.json"
-      }
+      "name": "Knights of the Frozen Throne",
+      "alias": "KFT",
+      "prefix": "ICC",
+      "setLocation": "kft.json"
     },{
-      "Kobolds and Catacombs": {
-        "alias": "KnC",
-        "prefix": "LOOT",
-        "setLocation": "knc.json"
-      }
+      "name": "Kobolds and Catacombs",
+      "alias": "KnC",
+      "prefix": "LOOT",
+      "setLocation": "knc.json"
     },{
-      "The Witchwood": {
-        "alias": "WW",
-        "prefix": "GIL",
-        "setLocation": "ww.json"
-      }
+      "name": "The Witchwood",
+      "alias": "WW",
+      "prefix": "GIL",
+      "setLocation": "ww.json"
     },{
-      "The Boomsday Project": {
-        "alias": "TBP",
-        "prefix": "BOT",
-        "setLocation": "boom.json"
-      }
+      "name": "The Boomsday Project",
+      "alias": "TBP",
+      "prefix": "BOT",
+      "setLocation": "boom.json"
     },{
-      "Rastakhan's Rumble": {
-        "alias": "Rumble",
-        "prefix": "TRL",
-        "setLocation": "rumble.json"
-      }
+      "name": "Rastakhan's Rumble",
+      "alias": "Rumble",
+      "prefix": "TRL",
+      "setLocation": "rumble.json"
     },{
-      "Rise of Shadows": {
-        "alias": "RoS",
-        "prefix": "DAL",
-        "setLocation": "ros.json",
-        "standard": 1
-      }
+      "name": "Rise of Shadows",
+      "alias": "RoS",
+      "prefix": "DAL",
+      "setLocation": "ros.json",
+      "standard": 1
     },{
-      "Saviors of Uldum": {
-        "alias": "SoU",
-        "prefix": "ULD",
-        "setLocation": "sou.json",
-        "standard": 1
-      }
+      "name": "Saviors of Uldum",
+      "alias": "SoU",
+      "prefix": "ULD",
+      "setLocation": "sou.json",
+      "standard": 1
     },{
-      "Descent of Dragons": {
-        "alias": "DoD",
-        "prefix": "DRG",
-        "setLocation": "dod.json",
-        "standard": 1
-      }
+      "name": "Descent of Dragons",
+      "alias": "DoD",
+      "prefix": "DRG",
+      "setLocation": "dod.json",
+      "standard": 1
     },{
-      "Galakrond's Awakening": {
-        "alias": "GA",
-        "prefix": "YOD",
-        "setLocation": "yod.json",
-        "standard": 1
-      }
+      "name": "Galakrond's Awakening",
+      "alias": "GA",
+      "prefix": "YOD",
+      "setLocation": "yod.json",
+      "standard": 1
     },{
-      "Initiate": {
-        "alias": "DH",
-        "prefix": "BT",
-        "setLocation": "dh_initiate.json",
-        "standard": 1
-      }
+      "name": "Demon Hunter Initiate",
+      "alias": "DH",
+      "prefix": "BT",
+      "setLocation": "dh_initiate.json",
+      "standard": 1
     },{
-      "Ashes of Outland": {
-        "alias": "AoO",
-        "prefix": "BT",
-        "setLocation": "outland.json",
-        "standard": 1
-      }
+      "name": "Ashes of Outland",
+      "alias": "AoO",
+      "prefix": "BT",
+      "setLocation": "outland.json",
+      "standard": 1
     },{
-      "Scholomance Academy": {
-        "alias": "Scholomance",
-        "prefix": "SCH",
-        "setLocation": "scholomance.json",
-        "standard": 1
-      }
+      "name": "Scholomance Academy",
+      "alias": "Scholomance",
+      "prefix": "SCH",
+      "setLocation": "scholomance.json",
+      "standard": 1
     }
   ]
 }

@@ -105,6 +105,7 @@ public class Minion extends Entity{
             if(e == null){
                 throw new IllegalArgumentException();
             }
+
         }
         this.enchantments.addAll(enchantments);
         return true;
@@ -138,4 +139,6 @@ public class Minion extends Entity{
     public String getName(){
         return name;
     }
+
+
 }

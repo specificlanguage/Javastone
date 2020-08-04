@@ -141,4 +141,6 @@ public class Player extends Entity {
     public void addArmor(int armor){
         this.armor += armor;
     }
+
+    //TODO: card updates
 }

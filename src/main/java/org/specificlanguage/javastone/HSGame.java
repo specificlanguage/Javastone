@@ -71,16 +71,11 @@ public class HSGame {
         return true;
     }
 
-    private void listenerCheck(GameEvent e){
-        for (GameListener listener : listeners) {
-            if (listener.getEvent().getClass() == e.getClass()) {
-                listeners.remove(listener);
-                listener.processEvent(e);
-            }
-        }
-    }
-
     public boolean removeListener(GameListener listener){
+        if(this.listeners.contains(listener)){
+            return false;
+        }
+
         this.listeners.remove(listener);
         return true;
     }

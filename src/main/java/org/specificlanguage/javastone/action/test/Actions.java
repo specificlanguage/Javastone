@@ -14,22 +14,14 @@ public class Actions {
      *
      * @param onPlay - A JSONObject formatted in onPlay formatted to make actions
      * @param player - A player object that is creating (or casting) the gameAction.
-     * @return LinkedList of GameActions
+     * @return
      */
-
-    // TODO: reformat "action" tab into JSONObject, not array!
     public static LinkedList<GameAction> createNewAction(JSONObject onPlay, final Player player){
         JSONArray actions = onPlay.getJSONArray("action");
         boolean targetable = onPlay.getBoolean("targetable");
         if(targetable){
             String targetType = onPlay.getString("targetType");
             String restrictions = onPlay.getString("restrictions");
-            try{
-                String condition = onPlay.getString("condition");
-                //TODO: conditions
-            } catch(Exception ignored){
-
-            }
             // TODO: make sure you get these parameters all set
         }
 
@@ -59,8 +51,6 @@ public class Actions {
      * index 3+ - and then arguments.
      */
 
-
-
     private static LinkedList<Object> getAction(String s, boolean targetable){
         StringBuilder commandReq = new StringBuilder();
         String args = "";
@@ -77,7 +67,7 @@ public class Actions {
         result.add(0, false);
 
         for(Command command : Command.values()){
-            if(!command.toString().toLowerCase().equals(commandReq.toString().toLowerCase())){
+            if(command.toString().toLowerCase() != commandReq.toString().toLowerCase()){
                 continue;
             }
 

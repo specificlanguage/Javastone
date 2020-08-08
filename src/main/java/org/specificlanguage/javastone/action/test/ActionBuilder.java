@@ -10,31 +10,15 @@ import java.util.List;
 public class ActionBuilder {
 
     public static GameAction<Entity> createAction(final Player player, final Command command, final LinkedList<Object> args){
+        //TODO: conditional statements like "If your character has attacked this turn..."
+
         switch(command) {
-            case ARMOR:
-                return new GameAction<Entity>() {
-                    @Override
-                    public boolean execute(Entity entity) {
-                        entity.getPlayerControlled().addArmor((int) args.get(3));
-                        return true;
-                    }
-
-                    @Override
-                    public Entity getCaster() {
-                        return null;
-                    }
-
-                    @Override
-                    public Command getGameAction() {
-                        return null;
-                    }
-                };
             case HEAL:
                 return new GameAction<Entity>() {
                     @Override
                     public boolean execute(Entity entity) {
                         entity.heal((int) args.get(3));
-                        return true;
+                        return false;
                     }
 
                     @Override
@@ -44,7 +28,7 @@ public class ActionBuilder {
 
                     @Override
                     public Command getGameAction() {
-                        return command;
+                        return Command.HEAL;
                     }
                 };
             case DAMAGE:
@@ -62,7 +46,7 @@ public class ActionBuilder {
 
                     @Override
                     public Command getGameAction() {
-                        return command;
+                        return Command.DAMAGE;
                     }
                 };
             case DRAW_CARD:
@@ -82,7 +66,7 @@ public class ActionBuilder {
 
                     @Override
                     public Command getGameAction() {
-                        return command;
+                        return Command.DRAW_CARD;
                     }
                 };
             case GIVE:
@@ -90,10 +74,12 @@ public class ActionBuilder {
                     @Override
                     public boolean execute(Entity entity) {
                         List<Attribute> attributesToGive = new LinkedList<>();
+
                         for (int i = 0; i < command.getMaxArgs(); i++){
                             String attribute = (String) args.get(i + 3);
                             attributesToGive.add(Attribute.matchValue(attribute));
                         }
+
                         entity.addAttributes(attributesToGive);
                         return true;
                     }
@@ -105,7 +91,7 @@ public class ActionBuilder {
 
                     @Override
                     public Command getGameAction() {
-                        return command;
+                        return Command.GIVE;
                     }
                 };
             default:

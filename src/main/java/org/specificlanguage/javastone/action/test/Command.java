@@ -5,6 +5,7 @@ public enum Command {
     DAMAGE(true, 1, 1),
     SUMMON(false,1, 1), // should change for however many you need
     GIVE(true, 1, 1000000),
+    ARMOR(false, 1, 1),
     DRAW_CARD(false, 1, 60); // max deckLength
 
     boolean targetable;
@@ -32,6 +33,8 @@ public enum Command {
     @Override
     public String toString() {
         switch(this){
+            case ARMOR:
+                return "ARMOR";
             case HEAL:
                 return "HEAL";
             case DAMAGE:

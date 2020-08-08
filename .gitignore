@@ -1,6 +1,5 @@
 .idea/
 target/
-out/
 
 src/main/resources/api_key.txt
 target/classes/api_key.txt

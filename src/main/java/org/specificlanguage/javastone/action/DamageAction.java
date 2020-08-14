@@ -1,88 +1,56 @@
 package org.specificlanguage.javastone.action;
 
+import org.specificlanguage.javastone.card.CardBuilder;
+import org.specificlanguage.javastone.card.CardType;
 import org.specificlanguage.javastone.entity.Entity;
-import org.specificlanguage.javastone.entity.Future;
-import org.specificlanguage.javastone.entity.Minion;
-import org.specificlanguage.javastone.entity.Player;
-import org.specificlanguage.javastone.event.GameEvent;
-import org.specificlanguage.javastone.event.TargetableEvent;
+import org.specificlanguage.javastone.entity.Filter;
 
-import java.util.Random;
+public class DamageAction implements GameAction {
 
-public class DamageAction implements Targetable {
+    ActionInfo info;
 
-    private class DamageEvent implements GameEvent {
-
-        public DamageAction damage;
-        public DamageEvent(DamageAction damage){
-            this.damage = damage;
-        }
-        @Override
-        public Action getAction() {
-            return damage;
-        }
+    public static GameAction create(Entity target, int damage, CardType cardType){
+        // NO FILTERS!
+        return create(target, damage, target.getPlayerControlled(), Filter.NONE, cardType);
     }
 
-    Entity target;
-    Entity caster;
-    int damage;
-
-    public DamageAction(Entity caster, Entity target, int damage){
-        if(caster instanceof Future || target == null || caster == null || damage <= 0){
-            throw new IllegalArgumentException();
-        }
-        this.target = target;
-        this.caster = caster;
-        this.damage = damage;
+    public static GameAction create(Entity target, int damage, Entity caster, CardType cardType){
+        return create(target, damage, caster, Filter.NONE, cardType);
     }
 
+    public static GameAction create(Entity target, int damage, Filter filter, CardType cardType){
+        return create(target, damage, target.getPlayerControlled(), filter, cardType);
+    }
+
+    public static GameAction create(Entity target, int damage, Entity caster, Filter filter,
+                                    CardType cardType){
+        DamageAction action = new DamageAction();
+        action.info.addArgument(ActionArg.TARGET, target);
+        action.info.addArgument(ActionArg.DAMAGE, damage);
+        action.info.addArgument(ActionArg.CASTER, caster);
+        action.info.addArgument(ActionArg.FILTER, filter);
+        action.info.addArgument(ActionArg.CARD_TYPE, cardType);
+        return action;
+    }
+
+    DamageAction(){
+        this.info = ActionInfo.build(this.getClass());
+    }
 
     @Override
-    public boolean execute() {
-
-        caster.getGame().processEvent(createEvent());
-        caster.getGame().processEvent(createTargetableEvent());
-
-        if(target instanceof Future){
-            if(caster instanceof Player){
-                //TODO let them pick the target
-            } else {
-                //TODO pick random target
-            }
-        }
-        target.damage(damage);
+    public boolean cast() {
+        int damage = (int) info.get(ActionArg.DAMAGE);
+        getTarget().damage(damage);
         return true;
     }
 
-    public Entity getCaster(){
-        return caster;
-    }
-
-    public Entity getTarget(){
-        return target;
+    @Override
+    public Entity getCaster() {
+        return info.getCaster();
     }
 
     @Override
-    public TargetableEvent createTargetableEvent() {
-        return new TargetableEvent(this);
+    public Entity getTarget() {
+        return info.getTarget();
     }
-
-    public GameEvent createEvent(){
-        return new DamageEvent(this);
-    }
-
-    public int getDamage(){ return damage; }
-
-    private boolean isMinion(Entity entity){
-        if (entity instanceof Minion)
-            return true;
-        return false;
-    }
-
-    private boolean isPlayer(Entity entity){
-        if(entity instanceof Player)
-            return true;
-        return false;
-    }
-
 }

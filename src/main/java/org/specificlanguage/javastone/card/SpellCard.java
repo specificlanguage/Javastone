@@ -1,7 +1,7 @@
 package org.specificlanguage.javastone.card;
 
 import org.specificlanguage.javastone.HSGame;
-import org.specificlanguage.javastone.action.Action;
+import org.specificlanguage.javastone.action.GameAction;
 import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.event.PlayCardEvent;
 
@@ -14,7 +14,7 @@ public class SpellCard extends Card{
             this.card = card;
         }
 
-        public Action getAction() {
+        public GameAction getAction() {
             return card.getAction();
         }
 
@@ -24,7 +24,7 @@ public class SpellCard extends Card{
         }
     }
 
-    Action action;
+    GameAction action;
     Entity caster;
     HSGame game;
 
@@ -37,7 +37,7 @@ public class SpellCard extends Card{
      * @param cardClass Class of the spell
      */
 
-    public SpellCard(Entity caster, Action action, int mana, String name, CardClass cardClass){
+    public SpellCard(Entity caster, GameAction action, int mana, String name, CardClass cardClass){
         if(action.getCaster() != caster){
             throw new IllegalArgumentException();
         } else if (mana < 0){
@@ -81,7 +81,7 @@ public class SpellCard extends Card{
         // call ActionBuilder for all effects
     }
 
-    Action getAction(){
+    GameAction getAction(){
         return action;
     }
 

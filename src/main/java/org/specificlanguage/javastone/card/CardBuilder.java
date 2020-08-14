@@ -1,17 +1,15 @@
 package org.specificlanguage.javastone.card;
 
-import org.specificlanguage.javastone.action.Action;
+import org.specificlanguage.javastone.action.GameAction;
 import org.specificlanguage.javastone.entity.Player;
 import org.specificlanguage.javastone.entity.attributes.Tribe;
 
 public class CardBuilder {
 
-    public enum CardType{
-        SPELL, MINION, WEAPON, HERO;
-    }
+
 
     Player player;
-    Action action;
+    GameAction action;
     CardType cardType;
     CardClass cardClass;
     int mana;
@@ -31,7 +29,7 @@ public class CardBuilder {
         return this;
     }
 
-    public CardBuilder setAction(Action action){
+    public CardBuilder setAction(GameAction action){
         this.action = action;
         return this;
     }

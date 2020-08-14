@@ -62,10 +62,7 @@ public class Player extends Entity {
         }
     }
 
-    public boolean playHeroPower(){
-        game.processEvent(heroPower.createEvent());
-        return true;
-    }
+    //TODO: HeroPowers need to be fixed
 
     @Override
     public void onDeath() {

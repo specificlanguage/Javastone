@@ -1,0 +1,40 @@
+{
+  "149": {
+    "img": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/CS2_041.png",
+    "cost": 0,
+    "collectible": true,
+    "mechanics": [ "TAUNT" ],
+    "dbfId": "149",
+    "type": "Spell",
+    "flavor": "I personally prefer some non-ancestral right-the-heck-now healing, but maybe that is just me.",
+    "playerClass": "Shaman",
+    "cardSet": "Basic",
+    "cardId": "CS2_041",
+    "faction": "Neutral",
+    "name": "Ancestral Healing",
+    "imgGold": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/animated/CS2_041_premium.gif",
+    "text": "Restore a minion\\nto full Health and\\ngive it <b>Taunt<\/b>.",
+    "rarity": "Free",
+
+    "onPlay": {
+      "action": {
+        "type": "CompoundAction",
+        "filter": "MINIONS",
+        "actions": [
+          {
+            "action": "HealAction",
+            "filter": "MINIONS",
+            "value": "maxHealth"
+          }, {
+            "class": "AddAttributeAction",
+            "filter": "MINIONS",
+            "attributes": [
+              "TAUNT"
+            ]
+          }
+        ]
+      }
+    }
+
+  }
+}

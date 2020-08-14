@@ -1,38 +1,21 @@
 package org.specificlanguage.javastone.card;
 
-import org.specificlanguage.javastone.HSGame;
 import org.specificlanguage.javastone.action.*;
 import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.entity.Future;
 import org.specificlanguage.javastone.entity.Player;
-import org.specificlanguage.javastone.event.GameEvent;
 
 import java.util.Objects;
 
 public class HeroPower extends Card {
 
-    private class HeroPowerEvent implements GameEvent {
-
-        private final HeroPower hp;
-        public HeroPowerEvent(HeroPower hp) {
-            this.hp = Objects.requireNonNull(hp);
-        }
-        public HeroPower getHeroPower(){
-            return this.hp;
-        }
-        public Action getAction(){
-            return hp.action;
-        }
-
-    }
-
-    private Action action;
+    private GameAction action;
     private String name;
     private String description;
     private boolean playable;
     private int mana;
 
-    public HeroPower(Action action, String name, String description, int mana){
+    public HeroPower(GameAction action, String name, String description, int mana){
         this.action = action;
         this.name = name;
         this.description = description;
@@ -40,6 +23,7 @@ public class HeroPower extends Card {
         this.mana = mana;
     }
 
+    /*
     public static HeroPower getBasicPowerFromClass(CardClass cc, Player player){
         switch(cc){
             case DEMON_HUNTER:
@@ -75,6 +59,8 @@ public class HeroPower extends Card {
         return null;
     }
 
+     */
+
     @Override
     public boolean playCard() {
         Entity caster = action.getCaster();
@@ -88,15 +74,11 @@ public class HeroPower extends Card {
             return false;
         }
         
-        player.getGame().processEvent(new HeroPowerEvent(this));
+        // player.getGame().processEvent(new HeroPowerEvent(this));
         player.useMana(mana);
         playable = false;
-        this.action.execute(); // will process its own event
+        this.action.cast();
         return true;
-    }
-
-    public GameEvent createEvent(){
-        return new HeroPowerEvent(this);
     }
 
     public boolean isPlayable(){

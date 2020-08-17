@@ -35,6 +35,35 @@
         ]
       }
     }
+  },
 
+  "180": {
+    "img": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/CS2_072.png",
+    "cost": 0,
+    "collectible": true,
+    "artist": "Michael Sutfin",
+    "dbfId": "180",
+    "type": "Spell",
+    "howToGetGold": "Unlocked at Level 36.",
+    "locale": "enUS",
+    "flavor": "It's funny how often yelling \"Look over there!\" gets your opponent to turn around.",
+    "playerClass": "Rogue",
+    "cardSet": "Basic",
+    "cardId": "CS2_072",
+    "faction": "Neutral",
+    "name": "Backstab",
+    "imgGold": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/animated/CS2_072_premium.gif",
+    "howToGet": "Unlocked at Level 1.",
+    "text": "Deal 2 damage to an undamaged minion.",
+    "rarity": "Free",
+
+    "onPlay": {
+      "action": {
+        "type": "DamageAction",
+        "filter": [ "UNDAMAGED", "MINION" ],
+        "damage": 2
+      }
+    }
   }
+
 }

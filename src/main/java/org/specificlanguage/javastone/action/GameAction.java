@@ -7,5 +7,6 @@ public interface GameAction {
     boolean cast();
     Entity getCaster();
     Entity getTarget();
+    ActionInfo getInfo();
 
 }

@@ -18,6 +18,7 @@ public class Player extends Entity {
     private int usableMana;
     private int maxMana;
     private int fatigue;
+    private int spellDamage;
 
     private Player(){
         this.hand = new LinkedList<>();
@@ -26,6 +27,7 @@ public class Player extends Entity {
         playerControlled = this;
         maxMana = 0; usableMana = 0;
         fatigue = 0;
+        spellDamage = 0;
     }
 
     public Player(CardClass cc){
@@ -137,6 +139,10 @@ public class Player extends Entity {
 
     public void addArmor(int armor){
         this.armor += armor;
+    }
+
+    public int getSpellDamage(){
+        return this.spellDamage;
     }
 
     //TODO: card updates

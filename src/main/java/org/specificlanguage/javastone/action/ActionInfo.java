@@ -22,6 +22,13 @@ public class ActionInfo {
         return this; // may be dangerous
     }
 
+    public ActionInfo addArguments(Map<ActionArg, Object> argMap){
+        for(ActionArg arg : argMap.keySet()){
+            addArgument(arg, argMap.get(arg));
+        }
+        return this;
+    }
+
     public ActionInfo removeArgument(ActionArg arg){
         arguments.remove(arg);
         return this;

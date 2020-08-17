@@ -10,7 +10,8 @@ public enum ActionArg {
 
     CARD_TYPE,
 
-    DAMAGE
+    DAMAGE,
+    HEAL
 
 
 }

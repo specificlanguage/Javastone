@@ -5,8 +5,6 @@ import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.entity.Future;
 import org.specificlanguage.javastone.entity.Player;
 
-import java.util.Objects;
-
 public class HeroPower extends Card {
 
     private GameAction action;
@@ -23,20 +21,23 @@ public class HeroPower extends Card {
         this.mana = mana;
     }
 
-    /*
+
     public static HeroPower getBasicPowerFromClass(CardClass cc, Player player){
         switch(cc){
+            /*
             case DEMON_HUNTER:
                 // return new HeroPower(new GiveHeroAttack(player), "Demon Claws", "Give your hero +1 attack.");
             case DRUID:
                 // hpaction = new CompoundAction(new GiveHeroAttack(player), new Armor(2, player));
                 // return new HeroPower(hpaction, "....", "Give your hero +1 attack and armor.");
+                */
             case HUNTER:
-                return new HeroPower(new DamageAction(player.getOpponent(), player, 2), "Steady Shot",
-                        "Deal 2 damage to the enemy hero.", 2);
+                return new HeroPower(DamageAction.create(player.getOpponent(), 2, player, CardType.HERO_POWER),
+                        "Steady Shot", "Deal 2 damage", 2);
             case MAGE:
-                return new HeroPower(new DamageAction(player, new Future(), 1), "Fireblast",
-                        "Deal 1 damage.", 2);
+                return new HeroPower(DamageAction.create(new Future(), 1, player, CardType.HERO_POWER),
+                        "Fireburst", "Deal 1 damage", 2);
+                /*
             case PALADIN:
                 return new HeroPower(new SummonAction(1, 1, 1, "Silver Hand Recruit",
                         player, player, CardClass.PALADIN), "Reinforce", "Summon a 1/1 Silver Hand Recruit.", 2);
@@ -54,12 +55,10 @@ public class HeroPower extends Card {
                         new DrawCardAction(player, 1)), "Life Tap",
                         "Take 2 damage and draw a card.", 2);
             default:
-                // return null; // literally can't
+                // return null; // literally can't */
         }
         return null;
     }
-
-     */
 
     @Override
     public boolean playCard() {

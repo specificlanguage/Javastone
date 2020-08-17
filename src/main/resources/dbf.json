@@ -1,0 +1,17 @@
+{
+
+  "149": {
+    "name": "Ancestral Healing",
+    "set": "Basic",
+    "cardClass": "Shaman",
+    "type": "Spell"
+  },
+
+  "180":{
+    "name": "Backstab",
+    "set": "Basic",
+    "cardClass": "Rogue",
+    "type": "Spell"
+  }
+
+}

@@ -17,6 +17,10 @@ public class CardBuilder {
     int maxHealth;
     Tribe tribe;
     String imagePath;
+    String name;
+    String flavor;
+    String text;
+    Rarity rarity;
 
     public CardBuilder(){}
 
@@ -69,6 +73,26 @@ public class CardBuilder {
         return this;
     }
 
+    public CardBuilder setName(String name){
+        this.name = name;
+        return this;
+    }
+
+    public CardBuilder setFlavor(String flavor){
+        this.flavor = flavor;
+        return this;
+    }
+
+    public CardBuilder setText(String text) {
+        this.text = text;
+        return this;
+    }
+
+    public CardBuilder setRarity(Rarity rarity){
+        this.rarity = rarity;
+        return this;
+    }
+
     /*
     public Card buildCard(){
         assert (player != null && mana >= 0 && cardType != null);
@@ -91,4 +115,10 @@ public class CardBuilder {
         return null; //TODO: once you make those cards, make the card that!
     }
     */
+
+    //TODO: create a card!
+
+    public Card create(){
+        return null;
+    }
 }

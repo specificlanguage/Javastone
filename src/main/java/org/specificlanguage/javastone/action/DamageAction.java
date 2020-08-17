@@ -49,6 +49,8 @@ public class DamageAction implements GameAction {
     @Override
     public boolean cast() {
 
+        //TODO: Invoke Targetable
+
         int damage = (int) info.get(ActionArg.DAMAGE);
         if (!Filter.filterCheck(this)){
             return false;

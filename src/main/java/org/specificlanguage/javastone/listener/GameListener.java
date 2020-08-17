@@ -1,30 +1,23 @@
 package org.specificlanguage.javastone.listener;
 
 import org.specificlanguage.javastone.action.GameAction;
-import org.specificlanguage.javastone.event.GameEvent;
 
 public class GameListener {
 
-    GameEvent event;
     GameAction actionToListen; // TODO: make it so that actions are type-empty at start so we can change them at execution time
     GameAction actionToRemove;
 
-    GameListener(GameEvent event, GameAction actionToListen, GameAction actionToRemove){
-        this.event = event;
+    GameListener(GameAction actionToListen, GameAction actionToRemove){
         this.actionToListen = actionToListen;
         this.actionToRemove = actionToRemove;
     }
 
     public boolean processEvent(GameAction action){
         if (action.getClass() == this.actionToListen.getClass()){
-            action.execute();
+            action.cast();
             return true;
         }
         return false;
-    }
-
-    public GameEvent getEvent(){
-        return event;
     }
 
     public boolean checkAction(GameAction action){

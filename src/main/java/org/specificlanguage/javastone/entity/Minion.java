@@ -4,7 +4,6 @@ import org.specificlanguage.javastone.card.CardClass;
 import org.specificlanguage.javastone.enchantment.Enchantment;
 import org.specificlanguage.javastone.entity.attributes.Attribute;
 import org.specificlanguage.javastone.entity.attributes.Tribe;
-import org.specificlanguage.javastone.event.GameEvent;
 import org.specificlanguage.javastone.listener.GameListener;
 
 import java.util.LinkedList;
@@ -17,7 +16,7 @@ public class Minion extends Entity{
     private CardClass cardClass;
     private String id;
     private LinkedList<GameListener> listeners;
-    private List<GameEvent> deathrattles;
+    // deathrattles
     private Tribe tribe;
     private List<Attribute> attributes;
     private List<Enchantment> enchantments;
@@ -32,7 +31,7 @@ public class Minion extends Entity{
         this.cardClass = cardClass;
         this.attributes = new LinkedList<>();
         this.enchantments = new LinkedList<>();
-        this.deathrattles = new LinkedList<>();
+        // this.deathrattles = new LinkedList<>();
         this.listeners = new LinkedList<>();
     }
 
@@ -72,20 +71,20 @@ public class Minion extends Entity{
             game.removeListener(gl);
         }
 
-        for(GameEvent e : deathrattles){
-            e.getAction().execute();
-        }
+        //for(GameEvent e : deathrattles){
+          //  e.getAction().execute();
+        // }
         game.getBoard().removeMinion(this);
     }
 
     public void onDeath(){
-        new DeathAction(this).execute();
+        // new DeathAction(this).execute();
         deathSequence();
     }
 
-    public boolean attack(Entity target){
-        return new AttackAction(this, target).execute();
-    }
+    // public boolean attack(Entity target){
+    //     return new AttackAction(this, target).execute();
+    // }
 
     public boolean hasTaunt(){
         if(attributes.contains(Attribute.TAUNT))
@@ -122,9 +121,9 @@ public class Minion extends Entity{
         return this.enchantments;
     }
 
-    public List<GameEvent> getDeathrattles(){
-        return this.deathrattles;
-    }
+    // public List<GameEvent> getDeathrattles(){
+    //    return this.deathrattles;
+    // }
 
     public int getCost() {
         return cost;

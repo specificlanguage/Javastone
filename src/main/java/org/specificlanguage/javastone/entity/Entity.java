@@ -82,7 +82,7 @@ public abstract class Entity {
             // send message saying you can't attack yourself!
             throw new IllegalArgumentException();
         }
-        new AttackAction(this, target).execute();
+        // new AttackAction(this, target).execute();
         return true;
     }
 

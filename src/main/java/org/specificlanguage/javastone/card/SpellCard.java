@@ -3,26 +3,8 @@ package org.specificlanguage.javastone.card;
 import org.specificlanguage.javastone.HSGame;
 import org.specificlanguage.javastone.action.GameAction;
 import org.specificlanguage.javastone.entity.Entity;
-import org.specificlanguage.javastone.event.PlayCardEvent;
 
 public class SpellCard extends Card{
-
-    private class SpellCastEvent implements PlayCardEvent {
-        SpellCard card;
-
-        public SpellCastEvent(SpellCard card){
-            this.card = card;
-        }
-
-        public GameAction getAction() {
-            return card.getAction();
-        }
-
-        @Override
-        public Card getCard() {
-            return card;
-        }
-    }
 
     GameAction action;
     Entity caster;
@@ -85,12 +67,20 @@ public class SpellCard extends Card{
         return action;
     }
 
-
+/*
     @Override
     boolean playCard() {
         game.processEvent(new SpellCastEvent(this));
         action.execute();
         return true;
+    }
+
+ */
+
+    @Override
+    boolean playCard() {
+        // temp
+        return false;
     }
 
     @Override

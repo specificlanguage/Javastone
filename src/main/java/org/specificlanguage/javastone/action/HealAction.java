@@ -30,6 +30,9 @@ public class HealAction implements GameAction {
 
     @Override
     public boolean cast() {
+
+        //TODO: Invoke Targetable
+
         if(!Filter.filterCheck(this)){
             return false;
         }

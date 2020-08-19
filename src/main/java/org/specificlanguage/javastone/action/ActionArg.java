@@ -12,7 +12,7 @@ public enum ActionArg {
 
     DAMAGE,
     HEAL,
-    ATTRIBUTES
-
+    ATTRIBUTES,
+    NESTED_ACTIONS;
 
 }

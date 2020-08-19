@@ -1,6 +1,7 @@
 package org.specificlanguage.javastone.action;
 
 import org.jetbrains.annotations.NotNull;
+import org.specificlanguage.javastone.HSGame;
 import org.specificlanguage.javastone.card.CardBuilder;
 import org.specificlanguage.javastone.card.CardType;
 import org.specificlanguage.javastone.entity.Entity;
@@ -48,6 +49,8 @@ public class DamageAction implements GameAction {
 
     @Override
     public boolean cast() {
+
+        HSGame.processAction(this);
 
         //TODO: Invoke Targetable
 

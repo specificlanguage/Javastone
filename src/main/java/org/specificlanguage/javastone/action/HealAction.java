@@ -1,5 +1,6 @@
 package org.specificlanguage.javastone.action;
 
+import org.specificlanguage.javastone.HSGame;
 import org.specificlanguage.javastone.card.CardType;
 import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.entity.Filter;
@@ -31,8 +32,7 @@ public class HealAction implements GameAction {
     @Override
     public boolean cast() {
 
-        //TODO: Invoke Targetable
-
+        HSGame.processAction(this);
         if(!Filter.filterCheck(this)){
             return false;
         }

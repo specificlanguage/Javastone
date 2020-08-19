@@ -29,8 +29,6 @@ public class CompoundAction implements GameAction{
 
     @Override
     public boolean cast() {
-        //TODO: make sure you push each thing on the Listener
-
         List childActions = (List) info.get(ActionArg.NESTED_ACTIONS);
         for(Object o : childActions){
             GameAction action = (GameAction) o;

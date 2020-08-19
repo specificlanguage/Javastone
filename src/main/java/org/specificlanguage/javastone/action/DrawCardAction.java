@@ -1,5 +1,6 @@
 package org.specificlanguage.javastone.action;
 
+import org.specificlanguage.javastone.HSGame;
 import org.specificlanguage.javastone.entity.Entity;
 
 public class DrawCardAction implements GameAction{
@@ -25,6 +26,7 @@ public class DrawCardAction implements GameAction{
 
     @Override
     public boolean cast() {
+        HSGame.processAction(this);
         //TODO: Enqueue action
         info.getCaster().getPlayerControlled().drawCard();
         return true;

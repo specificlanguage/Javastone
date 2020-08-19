@@ -42,6 +42,10 @@ public class HSGame {
         return board;
     }
 
+    public static void processAction(GameAction action){
+        action.getCaster().getGame().processEvent(action);
+    }
+
     public void processEvent(GameAction action){
         actions.push(action);
         listenerCheck(action);

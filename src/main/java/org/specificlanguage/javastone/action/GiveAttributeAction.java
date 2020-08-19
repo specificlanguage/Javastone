@@ -1,5 +1,6 @@
 package org.specificlanguage.javastone.action;
 
+import org.specificlanguage.javastone.HSGame;
 import org.specificlanguage.javastone.entity.Entity;
 import org.specificlanguage.javastone.entity.attributes.Attribute;
 
@@ -23,6 +24,7 @@ public class GiveAttributeAction implements GameAction {
 
     @Override
     public boolean cast() {
+        HSGame.processAction(this);
         Entity target = (Entity) info.get(ActionArg.TARGET);
         List attributeList = (List) info.get(ActionArg.ATTRIBUTES); // fingers crossed
         target.addAttributes(attributeList);

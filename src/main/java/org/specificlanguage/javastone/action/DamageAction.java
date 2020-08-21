@@ -30,6 +30,7 @@ public class DamageAction implements GameAction {
                                     CardType cardType){
         DamageAction action = new DamageAction();
         action.info.addArgument(ActionArg.TARGET, target);
+        action.info.addArgument(ActionArg.TARGETABLE, true);
         action.info.addArgument(ActionArg.DAMAGE, damage);
         action.info.addArgument(ActionArg.CASTER, caster);
         action.info.addArgument(ActionArg.FILTER, filter);

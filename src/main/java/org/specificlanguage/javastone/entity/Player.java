@@ -1,8 +1,12 @@
 package org.specificlanguage.javastone.entity;
 
+import org.specificlanguage.javastone.action.BuffHeroAction;
+import org.specificlanguage.javastone.action.EndOfTurnAction;
+import org.specificlanguage.javastone.action.GameAction;
 import org.specificlanguage.javastone.card.Card;
 import org.specificlanguage.javastone.card.CardClass;
 import org.specificlanguage.javastone.card.HeroPower;
+import org.specificlanguage.javastone.listener.GameListener;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +23,8 @@ public class Player extends Entity {
     private int maxMana;
     private int fatigue;
     private int spellDamage;
+    private int attack;
+    private LinkedList<Minion> graveyard;
 
     private Player(){
         this.hand = new LinkedList<>();
@@ -146,4 +152,20 @@ public class Player extends Entity {
     }
 
     //TODO: card updates
+
+     public void addAttack(int attack){
+        this.attack += attack;
+
+        // solve things
+        GameAction action = EndOfTurnAction.create(this);
+        GameAction undoAction = BuffHeroAction.create(this, 0, -attack);
+        GameListener listener = new GameListener(action, undoAction, action);
+        LinkedList<GameListener> listeners = new LinkedList<>();
+        listeners.add(listener);
+        this.game.addListeners(listeners);
+     }
+
+     public void removeAttack(int attack){
+        this.attack -= attack;
+     }
 }

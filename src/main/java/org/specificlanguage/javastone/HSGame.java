@@ -49,6 +49,7 @@ public class HSGame {
     public void processEvent(GameAction action){
         actions.push(action);
         listenerCheck(action);
+        action.cast();
     }
 
     public boolean addListeners(LinkedList<GameListener> listeners){

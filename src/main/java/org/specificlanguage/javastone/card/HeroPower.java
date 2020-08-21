@@ -2,10 +2,11 @@ package org.specificlanguage.javastone.card;
 
 import org.specificlanguage.javastone.action.*;
 import org.specificlanguage.javastone.entity.Entity;
+import org.specificlanguage.javastone.entity.Filter;
 import org.specificlanguage.javastone.entity.Future;
 import org.specificlanguage.javastone.entity.Player;
 
-public class HeroPower extends Card {
+public class HeroPower<T extends GameAction> extends Card {
 
     private GameAction action;
     private String name;
@@ -41,9 +42,11 @@ public class HeroPower extends Card {
             case PALADIN:
                 return new HeroPower(new SummonAction(1, 1, 1, "Silver Hand Recruit",
                         player, player, CardClass.PALADIN), "Reinforce", "Summon a 1/1 Silver Hand Recruit.", 2);
+                        */
             case PRIEST:
-                return new HeroPower(new HealAction(player, new Future(), 2), "Lesser Heal",
-                        "Restore 2 Health", 2);
+                return new HeroPower(HealAction.create(new Future(), 2, player, Filter.NO_FILTER),
+                        "Lesser Heal", "Restore 2 health", 2);
+                /*
             case ROGUE:
                 // return new HeroPower(new Equip(1, 2, player),
             case SHAMAN:

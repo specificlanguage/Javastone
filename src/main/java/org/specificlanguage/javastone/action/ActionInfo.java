@@ -55,4 +55,8 @@ public class ActionInfo {
         return (Entity) arguments.get(ActionArg.CASTER);
     }
 
+    public int getInt(ActionArg arg){
+        return (int) arguments.get(arg);
+    }
+
 }

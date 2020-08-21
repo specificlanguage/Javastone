@@ -4,6 +4,7 @@ public enum ActionArg {
 
     CLASS,
 
+    TARGETABLE,
     TARGET,
     CASTER,
     FILTER, // requires a filter from Filter to check
@@ -13,6 +14,7 @@ public enum ActionArg {
     DAMAGE,
     HEAL,
     ATTRIBUTES,
-    NESTED_ACTIONS;
-
+    NESTED_ACTIONS,
+    ARMOR,
+    ATTACK;
 }

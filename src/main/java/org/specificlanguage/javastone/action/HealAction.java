@@ -19,6 +19,7 @@ public class HealAction implements GameAction {
     public static GameAction create(Entity target, int health, Entity caster, List<Filter> filter){
         HealAction action = new HealAction();
         action.info.addArgument(ActionArg.TARGET, target)
+                .addArgument(ActionArg.TARGETABLE, true)
                 .addArgument(ActionArg.HEAL, health)
                 .addArgument(ActionArg.CASTER, caster)
                 .addArgument(ActionArg.FILTER, filter);
